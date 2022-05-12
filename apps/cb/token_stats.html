@@ -1,0 +1,62 @@
+<!-- HTML document displaying the output of token_stats.js -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Token Stats</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="./token_stats.js"></script>
+
+
+<!-- javascript outputs to output id create div with id -->
+<!-- run token_stats.js -->
+<!-- token_stats.js writes a series of IDs -->
+<body onLoad="output('initializing')">  <!-- body tag is required for bootstrap -->
+<section>
+    <!-- create div with some margin -->
+
+<div id="token_stats_output" class="container">
+    <h1>User Stats</h1>
+    <!-- user number input -->
+    <!-- user number input of width 5 characters -->
+
+
+    <span>$<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '250' style="width:7em"></span>
+
+    <pre >User spends: $<span id="user_spends"></span></pre>
+    <pre >Tokens: <input type="number" onChange="token_change()" id="user_tokens" placeholder="Tokens"></span> tokens</pre>
+
+    <h2>Model stats</h2>
+    <!-- Get the model private rate in tokens/minute -->
+    <p><input type="number" onChange="output()" id="model_rate" value = '42' style="width:5em"> tokens/minute</p>
+    <pre> Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></pre>
+    <!-- <pre> Private time: <span id="indep_private_time"></span></pre> -->
+    <h3>in studio</h3>
+    <!-- get studio fraction -->
+    <pre> Income: $<span id="studio_income"></span></pre>
+    <pre> Real private rate: <span id="studio_rate"></span> $/min</pre>
+    <span id="studio_rate"></span>
+
+    <h3>independent</h3>
+    <pre> Income: $<span id="indep_income"></span></pre>
+    <pre> Real private rate: <span id="indep_rate"></span> $/min</pre>
+    <span id="studio_rate"></span>
+
+    <h3>direct</h3>
+    <p> This uses the model real private rate to
+        determine how long the model would need
+        to be in private to earn the total amount
+        the user spend -- so if the user gave that
+        money directly</p>
+    <pre> Income: $<span id="direct_income"></span></pre>
+    <pre style="color:red" > Private time (studio rate): <span id="direct_private_time_studio"></span></pre>
+    <pre> Private time (indep rate): <span id="direct_private_time_indep"></span></pre>
+
+</div>
+</section>
+
+
+    <script src="./token_stats.js"></script>
+</body>
+
