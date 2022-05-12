@@ -8,13 +8,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/bootstrap-dark.min.css" />
+
 <script src="./token_stats.js"></script>
 
+<style>
+pre {
+    /* dark mode */
+    font-family: monospace;
+    font-size: 1.2em;
+    background-color: #222;
+    color: #fff;
+    padding: 1em;
+}
+
+input {
+    /* dark mode */
+    background-color: #222;
+    color: #fff;
+}
+</style>
 
 <!-- javascript outputs to output id create div with id -->
 <!-- run token_stats.js -->
 <!-- token_stats.js writes a series of IDs -->
-<body onLoad="output('initializing')">  <!-- body tag is required for bootstrap -->
+<body onLoad="output('initializing')" class="bootstrap-dark">  <!-- body tag is required for bootstrap -->
 <section>
     <!-- create div with some margin -->
 
