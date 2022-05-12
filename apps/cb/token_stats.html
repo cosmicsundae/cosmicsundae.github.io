@@ -8,11 +8,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/bootstrap-dark.min.css" />
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.0.0/dist/css/bootstrap-dark.min.css" /> -->
 
 <script src="./token_stats.js"></script>
 
 <style>
+    /* dark mode */
+    body {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+
 pre {
     /* dark mode */
     font-family: monospace;
@@ -54,7 +60,7 @@ input {
     <p><input type="number" onChange="output()" id="model_rate" value = '42' style="width:5em"> tokens/minute</p>
     <pre> Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></pre>
     <!-- <pre> Private time: <span id="indep_private_time"></span></pre> -->
-    <h3 style="display:inline">in studio</h3> ( model keeps: <input onChange="model_frac_change()" type="text" id="fm" style="width:2em" value="40">% ) </p>
+    <h3 style="display:inline">in studio</h3> ( model keeps: <input onChange="model_frac_change()" type="text" id="fm" style="width:3em" value="40">% ) </p>
     <!-- get studio fraction -->
     <pre> Income: $<span id="studio_income"></span></pre>
     <pre> Real private rate: <span id="studio_rate"></span> $/min</pre>
