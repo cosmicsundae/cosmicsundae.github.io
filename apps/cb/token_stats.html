@@ -16,7 +16,7 @@
 <section>
     <!-- create div with some margin -->
 
-<div id="token_stats_output" class="container">
+<div id="token_stats_output" class="container" style="vertical-align:middle">
     <h1>User Tokens</h1>
     <!-- user number input -->
     <!-- user number input of width 5 characters -->
@@ -33,7 +33,7 @@
     <p><input type="number" onChange="output()" id="model_rate" value = '42' style="width:5em"> tokens/minute</p>
     <pre> Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></pre>
     <!-- <pre> Private time: <span id="indep_private_time"></span></pre> -->
-    <h3>in studio</h3>
+    <h3 style="display:inline">in studio</h3> ( model keeps: <input onChange="model_frac_change()" type="text" id="fm" style="width:2em" value="40">% ) </p>
     <!-- get studio fraction -->
     <pre> Income: $<span id="studio_income"></span></pre>
     <pre> Real private rate: <span id="studio_rate"></span> $/min</pre>
