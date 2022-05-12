@@ -17,15 +17,16 @@
     <!-- create div with some margin -->
 
 <div id="token_stats_output" class="container">
-    <h1>User Stats</h1>
+    <h1>User Tokens</h1>
     <!-- user number input -->
     <!-- user number input of width 5 characters -->
 
 
-    <span>$<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '250' style="width:7em"></span>
+    <span hidden>$<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '80' style="width:7em"></span>
 
-    <pre >User spends: $<span id="user_spends"></span></pre>
-    <pre >Tokens: <input type="number" onChange="token_change()" id="user_tokens" placeholder="Tokens"></span> tokens</pre>
+    <pre hidden>User spends: $<span id="user_spends"></span></pre>
+    <pre >Tokens: <input type="number" onLoad="token_change()" onChange="token_change()" id="user_tokens" placeholder="Tokens" value="1072096"></span> tokens</pre>
+    <pre > Cost to user: $<span id="user_cost2"></span></pre>
 
     <h2>Model stats</h2>
     <!-- Get the model private rate in tokens/minute -->
