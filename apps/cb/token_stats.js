@@ -226,6 +226,7 @@ function output(message) {
 
 
     document.getElementById('user_spends').innerHTML = C;
+    document.getElementById('user_cost2').innerHTML = C;
     document.getElementById('user_tokens').innerHTML = T;
     document.getElementById('user_tokens2').innerHTML = T;
     document.getElementById('studio_private_time').innerHTML = model_pvt_time(studio_session);
