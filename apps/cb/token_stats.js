@@ -165,7 +165,9 @@ function output(message) {
 
     // Set model-studio split
     fs = 0.6;
-    fm = 0.4;
+    fm = parseFloat(document.getElementById("fm").value) / 100;
+
+    // fm = 0.4;
 
     // Get the model private rate
     input_Rpvt = parseInt(document.getElementById("model_rate").value);
@@ -256,5 +258,19 @@ function token_change() {
         C = Number.parseFloat(T * R).toFixed(2)
         document.getElementById("user_cost").value = C
         output('Tokens changes')
+    }
+}
+
+
+function model_frac_change() {
+
+    frac = parseFloat(document.getElementById("fm").value)/100;
+
+    if (frac != fm) {
+        console.log('model fraction changed from ' + fm + ' to ' + frac);
+
+        console.log('new model fraction: ' + frac);
+        fm = frac;
+        output('Model fraction changes')
     }
 }
