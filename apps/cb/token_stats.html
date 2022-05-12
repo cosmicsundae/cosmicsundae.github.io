@@ -6,6 +6,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="./token_stats.js"></script>
 
 
@@ -18,11 +20,12 @@
 
 <div id="token_stats_output" class="container" style="vertical-align:middle">
     <h1>User Tokens</h1>
-    <!-- user number input -->
-    <!-- user number input of width 5 characters -->
 
 
-    <span hidden>$<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '250' style="width:7em"></span>
+    <a href="#coll" class="glyphicon glyphicon-plus" data-toggle="collapse">User Cost</a>
+    <div class='collapse' id='coll'>
+        <p>Enter amount user spends $<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '80' style="width:7em"></p>
+    </div>
 
     <pre hidden>User spends: $<span id="user_spends"></span></pre>
     <pre >Tokens: <input type="number" onLoad="token_change()" onChange="token_change()" id="user_tokens" placeholder="Tokens" value="1072096"></span> tokens</pre>
