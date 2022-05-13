@@ -15,71 +15,99 @@
 <style>
     /* dark mode */
     body {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         color: #fff;
+        font-size: small
     }
-
-pre {
+h1 {
+    color:black
+}
+h2 {
+    color:black
+}
+h3 {
+    color:black;
+    display:inline;
+    vertical-align:middle;
+}
+span {
+    color:black
+}
+p {
     /* dark mode */
-    font-family: monospace;
-    font-size: 1.2em;
-    background-color: #222;
-    color: #fff;
-    padding: 1em;
+    font-family: sans-serif;
+    font-size: 10pt;
+    background-color: rgb(127, 189, 244);
+    color: rgb(0, 0, 0);
+    padding: .5em;
+    width: 50%;
+    border-radius: 10px;
 }
 
 input {
     /* dark mode */
-    background-color: #222;
-    color: #fff;
+    background-color: rgb(237, 237, 237);
+    color: rgb(0, 0, 0);
+    /* white border, rounded edges */
+    border: 1px solid rgb(153, 67, 162);
+    border-radius: 5px;
+    margin-bottom: .1em;
+
 }
 </style>
 
 <!-- javascript outputs to output id create div with id -->
 <!-- run token_stats.js -->
 <!-- token_stats.js writes a series of IDs -->
-<body onLoad="output('initializing')" class="bootstrap-dark">  <!-- body tag is required for bootstrap -->
+<body onLoad="output('initializing')">  <!-- body tag is required for bootstrap -->
 <section>
     <!-- create div with some margin -->
 
 <div id="token_stats_output" class="container" style="vertical-align:middle">
-    <h1>User Tokens</h1>
+    <h1>Token value calculator</h1>
+    <p style="background-color:white">
+    You can give the calculator either (1) the # numbers of tokens being spent by a user,
+     or (2) the amount of money the model wants to make working either intependently
+     or in a studio.
 
+     The calculator will self consistently calculate the value of the tokens.
+    </p>
 
     <a href="#coll" class="glyphicon glyphicon-plus" data-toggle="collapse">User Cost</a>
     <div class='collapse' id='coll'>
         <p>Enter amount user spends $<input type="number" onChange="output('changed user_cost')" id="user_cost" value = '250' style="width:7em"></p>
     </div>
-
-    <pre hidden>User spends: $<span id="user_spends"></span></pre>
-    <pre >Tokens: <input type="number" onLoad="token_change()" onChange="token_change()" id="user_tokens" placeholder="Tokens" value="1072096"></span> tokens</pre>
-    <pre > Cost to user: $<span id="user_cost2"></span></pre>
+    <br>
+    <br>
+    <p >Tokens: <input type="number" onLoad="token_change()" onChange="token_change()" id="user_tokens" placeholder="Tokens" value="1072096"></span> tokens</p>
+    <p > Cost to user: $<span id="user_cost2"></span></p>
 
     <h2>Model stats</h2>
     <!-- Get the model private rate in tokens/minute -->
     <p><input type="number" onChange="output()" id="model_rate" value = '42' style="width:5em"> tokens/minute</p>
-    <pre> Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></pre>
-    <!-- <pre> Private time: <span id="indep_private_time"></span></pre> -->
-    <h3 style="display:inline">in studio</h3> ( model keeps: <input onChange="model_frac_change()" type="text" id="fm" style="width:3em" value="40">% ) </p>
+    <p> Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></p>
+    <!-- <p> Private time: <span id="indep_private_time"></span></p> -->
+
+    <br>
+    <h3>in studio</h3> <span>(model keeps: <input onChange="model_frac_change()" type="text" id="fm" style="width:3em" value="40">%)</span>
     <!-- get studio fraction -->
-    <pre> Income: $<span id="studio_income"></span></pre>
-    <pre> Real private rate: <span id="studio_rate"></span> $/min</pre>
+    <p> Income: $<input type="text" id="studio_income" onChange="model_income_change()" style="width:10em"></p>
+    <p> Real private rate: <span id="studio_rate"></span> $/min</p>
     <span id="studio_rate"></span>
 
     <h3>independent</h3>
-    <pre> Income: $<span id="indep_income"></span></pre>
-    <pre> Real private rate: <span id="indep_rate"></span> $/min</pre>
+    <p> Income: $<input type="text" id="indep_income" onChange="model_income_change_indep()" style="width:10em"></p>
+    <p> Real private rate: <span id="indep_rate"></span> $/min</p>
     <span id="studio_rate"></span>
 
     <h3>direct</h3>
-    <p> This uses the model real private rate to
-        determine how long the model would need
+    <p> This determines how long the model would need
         to be in private to earn the total amount
-        the user spend -- so if the user gave that
+        the user spentt -- as if the user gave that
         money directly</p>
-    <pre> Income: $<span id="direct_income"></span></pre>
-    <pre style="color:red" > Private time (studio rate): <span id="direct_private_time_studio"></span></pre>
-    <pre> Private time (indep rate): <span id="direct_private_time_indep"></span></pre>
+    <p> Income: $<span id="direct_income"></span></p>
+    <p style> Private time (studio rate): <span id="direct_private_time_studio"></span></p>
+    <p> Private time (indep rate): <span id="direct_private_time_indep"></span></p>
 
 </div>
 </section>
