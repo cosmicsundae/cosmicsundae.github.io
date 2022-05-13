@@ -13,10 +13,10 @@ function token_rate(num_tokens=NaN, price = NaN) {
             // loop of num_token_list backwards
             for (var i = num_token_list.length - 1; i >= 0; i--) {
                 if (num_tokens >= num_token_list[i]) {
-                    console.log('num_tokens: ' + num_tokens);
-                    console.log('CB rate level')
-                    console.log('  # tokens: ' + num_token_list[i]);
-                    console.log('  price: ' + price_list[i]);
+                    // console.log('num_tokens: ' + num_tokens);
+                    // console.log('CB rate level')
+                    // console.log('  # tokens: ' + num_token_list[i]);
+                    // console.log('  price: ' + price_list[i]);
                     return price_list[i] / num_token_list[i];
                 }
             }
@@ -30,10 +30,10 @@ function token_rate(num_tokens=NaN, price = NaN) {
             // loop of price_list backwards
             for (var i = price_list.length - 1; i >= 0; i--) {
                 if (price >= price_list[i]) {
-                    console.log('price: ' + price);
-                    console.log('CB rate level')
-                    console.log('  # tokens: ' + num_token_list[i]);
-                    console.log('  price: ' + price_list[i]);
+                    // console.log('price: ' + price);
+                    // console.log('CB rate level')
+                    // console.log('  # tokens: ' + num_token_list[i]);
+                    // console.log('  price: ' + price_list[i]);
                     return price_list[i] / num_token_list[i];
                 }
             }
@@ -71,7 +71,7 @@ function model_income_user(kw) {
     R = kw.R; // usd/token
     T = kw.T  // Number.parseInt((kw.C / kw.R)); // token
     // round to 2 decimal places
-    return Number.parseFloat(T * kw.fm * kw.Rpay).toFixed(2);
+    return Number.parseFloat(T * kw.fm * kw.Rpay);
 }
 
 function model_income_token(kw) {
@@ -98,7 +98,7 @@ function model_token_rate(kw) {
     fm = kw.fm
     Rpay = kw.Rpay
     // round to 2 decimal places
-    return Number.parseFloat(fm * Rpay).toFixed(2);
+    return Number.parseFloat(fm * Rpay);
 }
 
 function model_pvt_dollar_per_min(kw) {
@@ -110,7 +110,7 @@ function model_pvt_dollar_per_min(kw) {
     Rpvt = kw.Rpvt;
     Rpay = kw.Rpay;
     // round to 2 decimal places
-    return Number.parseFloat(fm * Rpvt * Rpay).toFixed(2);
+    return Number.parseFloat(fm * Rpvt * Rpay);
 }
 
 function direct_income(kw) {
@@ -128,7 +128,7 @@ function direct_token_equiv(kw) {
     Rpay = kw.Rpay;
 
     model_rate = fm * Rpay;
-    tokens = Number.parseInt(C / model_rate, 0);
+    tokens = (C / model_rate);
     return tokens;
 }
 
@@ -160,18 +160,18 @@ function output(message) {
     R = chaturbate_rate(C) // USD / token
 
     // Get the number of Tokens from Cost and Rate
-    T = Number.parseInt((C / R));
-    document.getElementById("user_tokens").value = T;
+    T = (C / R);
+    document.getElementById("user_tokens").value = parseFloat(T).toFixed(2);
 
     // Set model-studio split
     fs = 0.6;
-    fm = parseFloat(document.getElementById("fm").value) / 100;
+    fm_s = parseFloat(document.getElementById("fm").value) / 100;
 
     // fm = 0.4;
 
     // Get the model private rate
-    input_Rpvt = parseInt(document.getElementById("model_rate").value);
-    document.getElementById("model_rate").value = input_Rpvt;
+    input_Rpvt = document.getElementById("model_rate").value;
+    document.getElementById("model_rate").value = parseFloat(input_Rpvt).toFixed(0);
     Rpvt = input_Rpvt;
 
     // CB token to USD rate
@@ -181,7 +181,7 @@ function output(message) {
         "C": C,
         "R": R,
         "T": T,
-        "fm": fm,
+        "fm": fm_s,
         "fs": fs,
         "Rpay": R_CB,
         "Rpvt": Rpvt
@@ -227,17 +227,16 @@ function output(message) {
     }
 
 
-    document.getElementById('user_spends').innerHTML = C;
-    document.getElementById('user_cost2').innerHTML = C;
-    document.getElementById('user_tokens').innerHTML = T;
-    document.getElementById('user_tokens2').innerHTML = T;
+    document.getElementById('user_cost2').innerHTML = C.toFixed(2);
+    document.getElementById('user_tokens').value = parseFloat(T).toFixed(0);
+    document.getElementById('user_tokens2').innerHTML = parseFloat(T).toFixed(0);
     document.getElementById('studio_private_time').innerHTML = model_pvt_time(studio_session);
-    document.getElementById('studio_income').innerHTML = model_income_user(studio_session);
-    document.getElementById('studio_rate').innerHTML = model_pvt_dollar_per_min(studio_session);
+    document.getElementById('studio_income').value = model_income_user(studio_session).toFixed(2);
+    document.getElementById('studio_rate').innerHTML = model_pvt_dollar_per_min(studio_session).toFixed(2);
     // document.getElementById('indep_private_time').innerHTML = model_pvt_time(indep_session);
-    document.getElementById('indep_income').innerHTML = model_income_user(indep_session);
-    document.getElementById('indep_rate').innerHTML = model_pvt_dollar_per_min(indep_session);
-    document.getElementById('direct_income').innerHTML = direct_income(indep_session);
+    document.getElementById('indep_income').value = model_income_user(indep_session).toFixed(2);
+    document.getElementById('indep_rate').innerHTML = model_pvt_dollar_per_min(indep_session).toFixed(2);
+    document.getElementById('direct_income').innerHTML = direct_income(indep_session).toFixed(2);
     document.getElementById('direct_private_time_studio').innerHTML = direct_pvt_time(studio_session);
     document.getElementById('direct_private_time_indep').innerHTML = direct_pvt_time(indep_session);
 }
@@ -256,7 +255,7 @@ function token_change() {
         console.log('new rate: ' + R)
 
         C = Number.parseFloat(T * R).toFixed(2)
-        document.getElementById("user_cost").value = C
+        document.getElementById("user_cost").value = parseFloat(C).toFixed(2)
         output('Tokens changes')
     }
 }
@@ -266,11 +265,54 @@ function model_frac_change() {
 
     frac = parseFloat(document.getElementById("fm").value)/100;
 
-    if (frac != fm) {
-        console.log('model fraction changed from ' + fm + ' to ' + frac);
+    if (frac != fm_s) {
+        console.log('model fraction changed from ' + fm_s + ' to ' + frac);
 
         console.log('new model fraction: ' + frac);
-        fm = frac;
+        fm_s = frac;
         output('Model fraction changes')
     }
 }
+
+
+function model_income_change() {
+    // determine # of tokens and cost required to get the specified income
+    var income, tokens, cost;
+    income = parseFloat(document.getElementById("studio_income").value);
+    tokens = income / parseFloat(R_CB * fm_s);
+    rate = token_rate(tokens, NaN);
+    cost = (tokens * rate);
+    // T = tokens;
+    // C = cost;
+    // R = rate;
+
+    document.getElementById("user_tokens").value = parseFloat(tokens).toFixed(0);
+    document.getElementById("user_cost").value = parseFloat(cost).toFixed(2);
+    document.getElementById("user_cost2").innerHTML = parseFloat(cost).toFixed(2);
+
+
+    output('Model income changes')
+
+}
+
+function model_income_change_indep() {
+    // determine # of tokens and cost required to get the specified income
+    var income, tokens, cost;
+    income = parseFloat(document.getElementById("indep_income").value);
+    tokens = income / parseFloat(R_CB);
+    rate = token_rate(tokens, NaN);
+    cost = Number.parseFloat(tokens * rate);
+    T = tokens;
+    C = cost;
+    R = rate;
+
+    document.getElementById("user_tokens").value = parseFloat(tokens).toFixed(0);
+    document.getElementById("user_cost").value = parseFloat(cost).toFixed(2);
+    document.getElementById("user_cost2").innerHTML = parseFloat(cost).toFixed(2);
+
+
+    output('Model income changes')
+
+}
+
+// shorturl.at/lpABO
