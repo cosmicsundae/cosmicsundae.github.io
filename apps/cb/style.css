@@ -1,0 +1,42 @@
+/* dark mode */
+body {
+  background-color: #eae7e5;
+  color: black;
+  font-size: 13pt;
+  vertical-align: middle;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h3 {
+  display: inline;
+}
+
+span {
+  color: black;
+}
+
+div {
+  width: 50%;
+  min-width: 25em;
+}
+
+p {
+  line-height: 1.15em;
+}
+
+section {
+  /* dark mode */
+  /* background-color: rgb(127, 189, 244); */
+  padding: 0.5em;
+  border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+  margin-bottom: 0.15em;
+}
+
+input {
+  border: 1px solid rgb(153, 67, 162);
+  border-radius: 5px;
+  margin-bottom: 0.1em;
+}
+
