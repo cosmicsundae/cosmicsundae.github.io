@@ -1,8 +1,16 @@
-var C, R, R_CB, Rpvt, T, fm, fs, indep_session, studio_session;
+var C, R, Rpay, Rpvt, T, fm, fs, indep_session, studio_session, model_dict;
 
-function token_rate(num_tokens=NaN, price = NaN) {
+function token_rate(num_tokens = NaN, price = NaN) {
     //  get the price of a certain number of tokens
-    token_price_dict = { 100: 10.99, 200: 20.99, 500: 44.99, 750: 62.99, 1000: 79.99, 1255: 99.99, 2025: 159.99 };
+    token_price_dict = {
+        100: 10.99,
+        200: 20.99,
+        500: 44.99,
+        750: 62.99,
+        1000: 79.99,
+        1255: 99.99,
+        2025: 159.99,
+    };
     num_token_list = Object.keys(token_price_dict);
     price_list = Object.values(token_price_dict);
     //  if num_tokens is not Nan,
@@ -20,7 +28,6 @@ function token_rate(num_tokens=NaN, price = NaN) {
                     return price_list[i] / num_token_list[i];
                 }
             }
-
         }
     } else if (!isNaN(price)) {
         //  if price is not Nan,
@@ -41,18 +48,16 @@ function token_rate(num_tokens=NaN, price = NaN) {
     } else {
         return NaN;
     }
-
 }
 
 function chaturbate_rate(price) {
-    return token_rate(NaN,price);
+    return token_rate(NaN, price);
 }
-
 
 function to_hms(time) {
     /*
-    convert minutes to hh:mm:ss
-    */
+      convert minutes to hh:mm:ss
+      */
     var h, m, s;
     // time = Number.parseFloat(time);
     h = Math.floor(time / 60);
@@ -61,258 +66,341 @@ function to_hms(time) {
     return h + "h " + m + "m"; // + s;
 }
 
-function model_income_user(kw) {
+function model_income(kw) {
     /*
-    how much a model makes from a certain amount
-    spent by a user
-     */
-
-
-    R = kw.R; // usd/token
-    T = kw.T  // Number.parseInt((kw.C / kw.R)); // token
-    // round to 2 decimal places
-    return Number.parseFloat(T * kw.fm * kw.Rpay);
-}
-
-function model_income_token(kw) {
-    /*
-    model income from tokens received
-    */
+      how much a model makes from a certain amount
+      spent by a user
+       */
 
     return kw.T * kw.fm * kw.Rpay;
 }
 
+
 function model_pvt_time(kw) {
     /*
-    model total possible private time from tokens received
-    */
-    T = kw.T;
-    Rpvt = kw.Rpvt;
-    return to_hms(T / Rpvt);
+      model total possible private time from tokens received
+      */
+    return kw.T / kw.Rpvt;
 }
 
 function model_token_rate(kw) {
     /*
-    income per token for a model
-    */
-    fm = kw.fm
-    Rpay = kw.Rpay
-    // round to 2 decimal places
-    return Number.parseFloat(fm * Rpay);
+      income per token for a model
+      */
+    return kw.fm * kw.Rpay;
 }
 
 function model_pvt_dollar_per_min(kw) {
     /*
-    how much the model makes from private time
-    */
-
-    fm = kw.fm;
-    Rpvt = kw.Rpvt;
-    Rpay = kw.Rpay;
-    // round to 2 decimal places
-    return Number.parseFloat(fm * Rpvt * Rpay);
+      how much the model makes from private time
+      */
+    return kw.fm * kw.Rpvt * kw.Rpay;
 }
 
 function direct_income(kw) {
     /*
-    how much model makes if directly supported
-    */
+      how much model makes if directly supported
+      */
 
     return kw.C;
 }
 
 function direct_token_equiv(kw) {
-    var model_rate, tokens;
-    fm = kw.fm;
-    C = kw.C;
-    Rpay = kw.Rpay;
-
-    model_rate = fm * Rpay;
-    tokens = (C / model_rate);
-    return tokens;
+    /*
+        number of tokens equivalent to direct support
+        */
+    return kw.C / (kw.fm * kw.Rpay);
 }
 
 function direct_pvt_time(kw) {
     /*
-    how much time is direct support in terms
-    of equivalent private minutes
-    */
-    var rate;
-
-
+      how much time is direct support in terms
+      of equivalent private minutes
+      */
     rate = model_pvt_dollar_per_min(kw);
-
-    return to_hms(kw.C / rate);
+    return kw.C / rate;
 }
-
 
 // get value from html input element and assing to variable
-console.log('===========================');
-console.log('Date: ' + new Date().toLocaleString());
+console.log("===========================");
+console.log("Date: " + new Date().toLocaleString());
 
 
-function output(message) {
-    console.log(message)
+function initializeForm() {
 
-    // Get the User cost
-    input_C = parseFloat(document.getElementById("user_cost").value);
-    C = input_C // USD
-    R = chaturbate_rate(C) // USD / token
+    // initialize form using the default data
+    console.log("Initializing form");
+    // Cost to the user
+    C = parseFloat(document.getElementById("user_spends").value); // USD
+
+    // fraction of token value received by the model
+    fm = parseFloat(document.getElementById("fm").value) / 100;
+    fs = 1 - fm;
+
+    // price of 1 minute of private time
+    Rpvt = parseFloat(document.getElementById("model_rate").value); // USD/min
+
+    // price of 1 token
+    R = chaturbate_rate(C); // USD / token
 
     // Get the number of Tokens from Cost and Rate
-    T = (C / R);
-    document.getElementById("user_tokens").value = parseFloat(T).toFixed(2);
+    T = C / R;
 
-    // Set model-studio split
-    fs = 0.6;
-    fm_s = parseFloat(document.getElementById("fm").value) / 100;
+    // CB token to USD rate // could make this a hidden setting for the future
+    Rpay = 0.05;
 
-    // fm = 0.4;
+    set_sessions();
 
-    // Get the model private rate
-    input_Rpvt = document.getElementById("model_rate").value;
-    document.getElementById("model_rate").value = parseFloat(input_Rpvt).toFixed(0);
-    Rpvt = input_Rpvt;
+    run_model()
 
-    // CB token to USD rate
-    R_CB = 0.05;
+    writeFormValues();
 
+}
+
+function set_sessions() {
     studio_session = {
-        "C": C,
-        "R": R,
-        "T": T,
-        "fm": fm_s,
-        "fs": fs,
-        "Rpay": R_CB,
-        "Rpvt": Rpvt
+        C: C,
+        R: R,
+        T: T,
+        fm: fm,
+        fs: fs,
+        Rpay: Rpay,
+        Rpvt: Rpvt,
     };
+    // run parseFloat over all dictionary values
+    studio_session = Object.fromEntries(
+        Object.entries(studio_session).map(
+            ([key, value]) => [key, parseFloat(value)]
+        )
+    );
+
     indep_session = {
-        "C": C,
-        "R": R,
-        "T": T,
-        "fm": 1,
-        "fs": 0,
-        "Rpay": R_CB,
-        "Rpvt": Rpvt
+        C: C,
+        R: R,
+        T: T,
+        fm: 1,
+        fs: 0,
+        Rpay: Rpay,
+        Rpvt: Rpvt,
     };
+    // run parseFloat over all dictionary values
+    indep_session = Object.fromEntries(
+        Object.entries(indep_session).map(
+            ([key, value]) => [key, parseFloat(value)]
+        )
+    );
+
+
+}
+
+function update(message) {
+    console.log(message);
+
+    // Get the User cost
+    run_model()
+    writeFormValues();
+}
+
+
+// run the model functions and put into a global dictionary
+function run_model() {
+
+
+    // Model income USD
+    incomeStudio = model_income(studio_session);
+    incomeIndep = model_income(indep_session);
+
+    // Private time minutes
+    pvtTimeStudio = model_pvt_time(studio_session);
+    pvtTimeIndep = model_pvt_time(indep_session);
+
+    // Token rate for model  USD/token
+    tokenRateStudio = model_token_rate(studio_session);
+    tokenRateIndep = model_token_rate(indep_session);
+
+    // Private time rate - dollars per minute
+    pvtDollarPerMinStudio = model_pvt_dollar_per_min(studio_session);
+    pvtDollarPerMinIndep = model_pvt_dollar_per_min(indep_session);
+
+    // Direct support income and token/private time equivalents
+    directIncome = direct_income(studio_session);
+    directTokenEquivStudio = direct_token_equiv(studio_session);
+    directPvtTimeStudio = direct_pvt_time(studio_session);
+    directTokenEquivIndep = direct_token_equiv(indep_session);
+    directPvtTimeIndep = direct_pvt_time(indep_session);
 
 
 
-    // new lines in console
+
+    model_dict = {
+        incomeStudio: incomeStudio,
+        incomeIndep: incomeIndep,
+        pvtTimeStudio: pvtTimeStudio,
+        pvtTimeIndep: pvtTimeIndep,
+        tokenRateStudio: tokenRateStudio,
+        tokenRateIndep: tokenRateIndep,
+        pvtDollarPerMinStudio: pvtDollarPerMinStudio,
+        pvtDollarPerMinIndep: pvtDollarPerMinIndep,
+        directIncome: directIncome,
+        directTokenEquivStudio: directTokenEquivStudio,
+        directPvtTimeStudio: directPvtTimeStudio,
+        directTokenEquivIndep: directTokenEquivIndep,
+        directPvtTimeIndep: directPvtTimeIndep,
+    };
+}
 
 
+function writeFormValues() {
 
     if (0) {
+        console.log("User spends " + C + " USD");
+        console.log("Tokens: " + T);
+        console.log("");
+        console.log("Model in studio");
+        console.log("time in private: " + model_dict.pvtTimeStudio);
+        console.log("income: $" + model_dict.incomeStudio);
+        console.log(
+            "real rate ($/min): " + model_dict.pvtDollarPerMinStudio
+        );
 
+        console.log("");
+        console.log("Model is independent");
+        console.log("time in private: " + model_dict.pvtTimeIndep);
+        console.log("income: $" + model_dict.incomeIndep);
+        console.log(
+            "real rate ($/min): " + model_dict.pvtDollarPerMinIndep
+        );
 
-        console.log('User spends ' + C + ' USD');
-        console.log('Tokens: ' + T);
-        console.log('');
-        console.log('Model in studio')
-        console.log('time in private: ' + model_pvt_time(studio_session))
-        console.log('income: $' + model_income_user(studio_session))
-        console.log('real rate ($/min): ' + model_pvt_dollar_per_min(studio_session))
-
-        console.log('')
-        console.log('Model is independent')
-        console.log('time in private: ' + model_pvt_time(indep_session))
-        console.log('income: $' + model_income_user(indep_session))
-        console.log('real rate ($/min): ' + model_pvt_dollar_per_min(indep_session))
-
-        console.log('')
-        console.log('Direct support')
-        console.log('direct pvt min @ indep rates: ' + direct_pvt_time(indep_session))
-        console.log('direct pvt min @ studio rate: ' + direct_pvt_time(studio_session))
-        console.log('direct income: $' + direct_income(indep_session))
+        console.log("");
+        console.log("Direct support");
+        console.log(
+            "direct pvt min @ indep rates: " + model_dict.directPvtTimeIndep
+        );
+        console.log(
+            "direct pvt min @ studio rate: " + model_dict.directPvtTimeStudio
+        );
+        console.log("direct income: $" + model_dict.directIncome);
     }
 
+    document.getElementById("user_spends").innerHTML = C.toFixed(2);
+    document.getElementById("user_spends2").innerHTML = C.toFixed(2);
+    document.getElementById("user_tokens").value = parseFloat(T).toFixed(0);
+    document.getElementById("user_tokens2").innerHTML = parseFloat(T).toFixed(0);
 
-    document.getElementById('user_cost2').innerHTML = C.toFixed(2);
-    document.getElementById('user_tokens').value = parseFloat(T).toFixed(0);
-    document.getElementById('user_tokens2').innerHTML = parseFloat(T).toFixed(0);
-    document.getElementById('studio_private_time').innerHTML = model_pvt_time(studio_session);
-    document.getElementById('studio_income').value = model_income_user(studio_session).toFixed(2);
-    document.getElementById('studio_rate').innerHTML = model_pvt_dollar_per_min(studio_session).toFixed(2);
-    // document.getElementById('indep_private_time').innerHTML = model_pvt_time(indep_session);
-    document.getElementById('indep_income').value = model_income_user(indep_session).toFixed(2);
-    document.getElementById('indep_rate').innerHTML = model_pvt_dollar_per_min(indep_session).toFixed(2);
-    document.getElementById('direct_income').innerHTML = direct_income(indep_session).toFixed(2);
-    document.getElementById('direct_private_time_studio').innerHTML = direct_pvt_time(studio_session);
-    document.getElementById('direct_private_time_indep').innerHTML = direct_pvt_time(indep_session);
+    document.getElementById("studio_private_time").innerHTML = to_hms(model_dict.pvtTimeStudio)
+    document.getElementById("studio_income").value = model_dict.incomeStudio.toFixed(2);
+    document.getElementById("studio_rate").innerHTML = model_dict.pvtDollarPerMinStudio.toFixed(2);
+
+    // document.getElementById('indep_private_time').innerHTML = model_dict.pvtTimeIndep; // same as studio
+    document.getElementById("indep_income").value = model_dict.incomeIndep.toFixed(2);
+    document.getElementById("indep_rate").innerHTML = model_dict.pvtDollarPerMinIndep.toFixed(2);
+
+    document.getElementById("direct_income").innerHTML = model_dict.directIncome.toFixed(2);
+    document.getElementById("direct_private_time_studio").innerHTML = to_hms(model_dict.directPvtTimeStudio);
+    document.getElementById("direct_private_time_indep").innerHTML = to_hms(model_dict.directPvtTimeIndep);
+
 }
 
-function token_change() {
 
-    var tokens;
-    tokens = document.getElementById("user_tokens").value;
+
+
+
+function changeCost() {
+    cost = parseFloat(document.getElementById("user_spends").value);
+    rate = parseFloat(token_rate(NaN, cost));
+
+    if (cost != C) {
+
+        console.log("Cost changed from " + C + " to " + cost);
+        console.log("Rate changed from " + R + " to " + rate);
+
+        C = cost;
+        R = rate;
+        T = C / R;
+
+        set_sessions();
+        update("Cost changed");
+    }
+}
+
+
+
+function changeToken() {
+    tokens = parseInt(document.getElementById("user_tokens").value);
+    rate = parseFloat(token_rate(T, NaN));
 
     if (tokens != T) {
-        console.log('# of tokens changed from ' + T + ' to ' + tokens);
-        T = Number.parseInt(tokens);
-        R = token_rate(T, NaN);
 
-        console.log('new Tokens: ' + T);
-        console.log('new rate: ' + R)
+        console.log("# of tokens changed from " + T + " to " + tokens);
+        console.log("Rate changed from " + R + " to " + rate);
 
-        C = Number.parseFloat(T * R).toFixed(2)
-        document.getElementById("user_cost").value = parseFloat(C).toFixed(2)
-        output('Tokens changes')
+        T = tokens;
+        R = rate;
+        C = T * R;
+
+        set_sessions();
+        update("# of tokens changed");
     }
 }
 
 
-function model_frac_change() {
+function changeRpvt() {
+    rate_pvt = parseFloat(document.getElementById("model_rate").value);
 
-    frac = parseFloat(document.getElementById("fm").value)/100;
+    if (rate_pvt != Rpvt) {
+        console.log("Rpvt changed from " + Rpvt + " to " + rate_pvt);
+        Rpvt = rate_pvt;
 
-    if (frac != fm_s) {
-        console.log('model fraction changed from ' + fm_s + ' to ' + frac);
-
-        console.log('new model fraction: ' + frac);
-        fm_s = frac;
-        output('Model fraction changes')
+        set_sessions();
+        update("Rpvt changed");
     }
 }
 
 
-function model_income_change() {
-    // determine # of tokens and cost required to get the specified income
-    var income, tokens, cost;
+function changeFM() {
+    frac = parseFloat(document.getElementById("fm").value) / 100;
+
+    if (frac != fm) {
+        console.log("model fraction changed from " + fm_s + " to " + frac);
+
+        console.log("new model fraction: " + frac);
+        fm = frac;
+        fs = 1 - frac;
+
+        set_sessions();
+        update("model fraction changed");
+    }
+}
+
+function changeStudioIncome() {
+
     income = parseFloat(document.getElementById("studio_income").value);
-    tokens = income / parseFloat(R_CB * fm_s);
-    rate = token_rate(tokens, NaN);
-    cost = (tokens * rate);
-    // T = tokens;
-    // C = cost;
-    // R = rate;
+    tokens = income / parseFloat(Rpay * fm);
+    rate = parseFloat(token_rate(tokens, NaN));
+    cost = tokens * rate;
 
-    document.getElementById("user_tokens").value = parseFloat(tokens).toFixed(0);
-    document.getElementById("user_cost").value = parseFloat(cost).toFixed(2);
-    document.getElementById("user_cost2").innerHTML = parseFloat(cost).toFixed(2);
-
-
-    output('Model income changes')
-
-}
-
-function model_income_change_indep() {
-    // determine # of tokens and cost required to get the specified income
-    var income, tokens, cost;
-    income = parseFloat(document.getElementById("indep_income").value);
-    tokens = income / parseFloat(R_CB);
-    rate = token_rate(tokens, NaN);
-    cost = Number.parseFloat(tokens * rate);
     T = tokens;
     C = cost;
     R = rate;
 
-    document.getElementById("user_tokens").value = parseFloat(tokens).toFixed(0);
-    document.getElementById("user_cost").value = parseFloat(cost).toFixed(2);
-    document.getElementById("user_cost2").innerHTML = parseFloat(cost).toFixed(2);
+    set_sessions()
+    update("studio income changed");
+}
+
+function changeIndepIncome() {
 
 
-    output('Model income changes')
+    income = parseFloat(document.getElementById("indep_income").value);
+    tokens = income / parseFloat(Rpay);
+    rate = parseFloat(token_rate(tokens, NaN));
+    cost = tokens * rate;
 
+    T = tokens;
+    C = cost;
+    R = rate;
+
+    set_sessions()
+    update("indep income changed");
 }
 
 // shorturl.at/lpABO
