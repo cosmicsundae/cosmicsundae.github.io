@@ -282,12 +282,13 @@ function writeFormValues() {
         console.log("direct income: $" + model_dict.directIncome);
     }
 
-    document.getElementById("user_spends").innerHTML = C.toFixed(2);
+    document.getElementById("user_spends").value = C.toFixed(2);
     document.getElementById("user_spends2").innerHTML = C.toFixed(2);
     document.getElementById("user_tokens").value = parseFloat(T).toFixed(0);
     document.getElementById("user_tokens2").innerHTML = parseFloat(T).toFixed(0);
 
-    document.getElementById("studio_private_time").innerHTML = to_hms(model_dict.pvtTimeStudio)
+    document.getElementById("private_time").value = parseFloat(model_dict.pvtTimeStudio).toFixed(0);
+    document.getElementById("studio_private_time").innerHTML = to_hms(model_dict.pvtTimeStudio);
     document.getElementById("studio_income").value = model_dict.incomeStudio.toFixed(2);
     document.getElementById("studio_rate").innerHTML = model_dict.pvtDollarPerMinStudio.toFixed(2);
 
@@ -403,4 +404,18 @@ function changeIndepIncome() {
     update("indep income changed");
 }
 
+function changePrivateTime() {
+    pvt_time = parseFloat(document.getElementById("private_time").value);
+    tokens = pvt_time * parseFloat(Rpvt);
+    rate = parseFloat(token_rate(tokens, NaN));
+    cost = tokens * rate;
+
+    // log debug values
+    T = tokens;
+    C = cost;
+    R = rate;
+
+    set_sessions()
+    update("private time changed");
+}
 // shorturl.at/lpABO
