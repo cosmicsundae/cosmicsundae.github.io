@@ -362,7 +362,7 @@ function changeFM() {
     frac = parseFloat(document.getElementById("fm").value) / 100;
 
     if (frac != fm) {
-        console.log("model fraction changed from " + fm_s + " to " + frac);
+        console.log("model fraction changed from " + fm + " to " + frac);
 
         console.log("new model fraction: " + frac);
         fm = frac;
