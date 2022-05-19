@@ -6,137 +6,158 @@
     <title>Token Stats</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
     <link rel="stylesheet" href="./style.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JN03KB36NY"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-JN03KB36NY');
+        gtag('config', 'G-JN03KB36NY');
     </script>
 
-        <script defer src="./token_stats.js"></script>
-    </head>
+    <script defer src="./token_stats.js"></script>
+</head>
 
 
 <body onLoad="initializeForm()">
     <!-- body tag is required for bootstrap -->
 
-        <!-- create div with some margin -->
+    <!-- create div with some margin -->
 
-        <div id="token_stats_output" class="container">
-            <h1>Token value calculator</h1>
+    <div id="token_stats_output" class="container">
+        <h1>Token value calculator</h1>
 
-            <p style="font-size:8pt;width:50%;">
-                This calculator calculates the how much you will
-                receive for a given amount of tokens. Additionally,
-                it will calculate how many minutes in private equate
-                to a number of tokens for a "Private Show Tokens per Minute" rate.
-                If you work in a studio, you can enter your cut percentage
-                to determine how much you will earn for a given amount of tokens.
-            </p>
-
-            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#coll"
-                    aria-expanded="false" aria-controls="direct-stats">Set user spend amount</button>
-            <div class='collapse' id='coll'>
+        <p style="font-size:8pt;width:50%;">
+            This calculator calculates the how much you will
+            receive for a given amount of tokens. Additionally,
+            it will calculate how many minutes in private equate
+            to a number of tokens for a "Private Show Tokens per Minute" rate.
+            If you work in a studio, you can enter your cut percentage
+            to determine how much you will earn for a given amount of tokens.
+        </p>
+        <p>
+            <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse"
+                data-bs-target="#spend_amount" aria-expanded="false" aria-controls="spend_amount">Set user spend
+                amount</button>
+        </p>
+        <div class='collapse' id='spend_amount'>
+            <div>
                 <p>Enter amount user spends $<input type="number" onChange="changeCost()" id="user_spends" value='250'
                         style="width:7em">
-                        <br>
-                        <span style="color:red;font-size:8pt;">Note: CB only allows users to buy tokens in
-                        certain increments unless they choose cryptocurrency to pay.
-                        <br>
-                        Amounts (USD) are: 11, 21, 40, 50, 63, 80, 100, 160, 320</span>
-                    </p>
+                <p style="color:red;font-size:8pt;">Note: CB only allows users to buy tokens in
+                    certain increments unless they choose cryptocurrency to pay.
+                    <br>
+                    Amounts (USD) are: 11, 21, 40, 50, 63, 80, 100, 160, 320
+                </p>
+                </p>
             </div>
-            <br>
-            <br>
-            <!-- Set User Tokens -->
-            <p>Tokens: <input type="number" onChange="changeToken()" id="user_tokens" placeholder="Tokens"
-                    value="1072096"></span> tokens</p>
+        </div>
+        <br>
+        <!-- Set User Tokens -->
+        <p>Tokens: <input type="number" onChange="changeToken()" id="user_tokens" placeholder="Tokens"
+                value="1072096"></span> tokens</p>
 
 
-            <!-- Display cost to the user -->
-            <p> This costs the user $<span id="user_spends2"></span></p>
+        <!-- Display cost to the user -->
+        <p> This costs the user $<span id="user_spends2"></span></p>
 
-            <!-- Display model statistics -->
+        <!-- Display model statistics -->
 
-            <div id="model stats">
-                <h2>Model stats</h2>
+        <div id="model stats" class="d-flex p-2 flex-column" >
+            <h1>Model stats</h1>
 
-                <!-- Get the model private rate in tokens/minute -->
+            <!-- Get the model private rate in tokens/minute -->
 
-                <p>
-                    <label for="model_rate">Private Rate</label>
-                    <select name="model_rate" id="model_rate" onChange="changeRpvt()" style="display: inline;">
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                        <option value="18">18</option>
-                        <option value="30">30</option>
-                        <option value="42" selected>42</option>
-                        <option value="60">60</option>
-                        <option value="72">72</option>
-                        <option value="90">90</option>
-                        <option value="120">120</option>
-                        <option value="150">150</option>
-                        <option value="180">180</option>
-                        <option value="240">240</option>
-                    </select> tokens/minute
+            <p>
+                <label for="model_rate">Private Rate</label>
+                <select name="model_rate" id="model_rate" onChange="changeRpvt()" style="display: inline;">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="18">18</option>
+                    <option value="30">30</option>
+                    <option value="42" selected>42</option>
+                    <option value="60">60</option>
+                    <option value="72">72</option>
+                    <option value="90">90</option>
+                    <option value="120">120</option>
+                    <option value="150">150</option>
+                    <option value="180">180</option>
+                    <option value="240">240</option>
+                </select> tokens/minute
                 <br>
                 <!-- Get the amount of time in private -->
-                <p>Private Time (minutes): <input type="number" onChange="changePrivateTime()" id="private_time" value="30" style="width:7em">
-                    minutes
+            <p>Private Time (minutes): <input type="number" onChange="changePrivateTime()" id="private_time" value="30"
+                    style="width:7em">
+                minutes
+            </p>
+            <p style="display: inline;"> Private time (<span id="user_tokens2"></span> tkn): <span
+                    id="studio_private_time"></span></p>
+            <p></p>
+
+            <p>
+            <section id="studio-stats">
+
+                <h2>in studio</h2>
+
+                <p>
+                    Model keeps: <input onChange="changeFM()" type="text" id="fm" style="width:3em" value="40">%
                 </p>
-                Private time (<span id="user_tokens2"></span> tkn): <span id="studio_private_time"></span></p>
+                <p>
+                    Income: $<input type="text" id="studio_income" onChange="changeStudioIncome()" style="width:10em">
+                </p>
+                <p>
+                    In private you earn: <span id="studio_rate"></span> $/min
+                </p>
 
+            </section>
+        </p>
+        <p>
+            <section id="indep-stats">
 
-                <section id="studio-stats">
+                <h2>independent</h2>
+                <p> Income: $<input type="text" id="indep_income" onChange="changeIndepIncome()" style="width:10em">
+                <p>
+                    In private you earn: <span id="indep_rate"></span> $/min
+                </p>
 
-                    <h3>in studio</h3> <span>(model keeps: <input onChange="changeFM()" type="text" id="fm" style="width:3em"
-                            value="40">%)</span>
-
-
-                    <p> Income: $<input type="text" id="studio_income" onChange="changeStudioIncome()" style="width:10em">
-                    <br>
-                    In private you earn: <span id="studio_rate"></span> $/min</p>
-
-                </section>
-
-                <section id="indep-stats">
-
-                    <h3>independent</h3>
-                    <p> Income: $<input type="text" id="indep_income" onChange="changeIndepIncome()" style="width:10em">
-                    <br>
-                    In private you earn: <span id="indep_rate"></span> $/min</p>
-
-                </section>
-
-                <br><br>
-
-                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#direct-stats"
-                    aria-expanded="false" aria-controls="direct-stats">Direct</button>
+            </section>
+        </p>
+            <br>
+            <p>
+            <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse"
+                data-bs-target="#direct-stats" aria-expanded="false" aria-controls="direct-stats">Direct</button>
+            </p>
                 <section class='collapse' id="direct-stats">
 
-                    <p> This determines how long the model would need
-                        to be in private to earn the total amount
-                        the user spent</p>
-                    <p> Income: $<span id="direct_income"></span></p>
-                    <p style> Private time (studio rate): <span id="direct_private_time_studio"></span></p>
-                    <p> Private time (indep rate): <span id="direct_private_time_indep"></span></p>
+                <p> This determines how long the model would need
+                    to be in private to earn the total amount
+                    the user spent</p>
+                <p> Income: $<span id="direct_income"></span></p>
+                <p style> Private time (studio rate): <span id="direct_private_time_studio"></span></p>
+                <p> Private time (indep rate): <span id="direct_private_time_indep"></span></p>
 
-                </section>
-
-            </div>
+            </section>
 
         </div>
 
-        <!-- 2 cm of vertical space -->
+    </div>
+
+    <!-- 2 cm of vertical space -->
 
 
-        <center><footer style="font-size: 5pt; margin-top:1cm;">Sunday &copy; 2022</footer></center>
+    <center>
+        <footer style="font-size: 5pt; margin-top:1cm;">Sunday &copy; 2022</footer>
+    </center>
 </body>
