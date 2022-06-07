@@ -328,11 +328,11 @@ function changeCost() {
 
 function changeToken() {
     tokens = parseInt(document.getElementById("user_tokens").value);
-    rate = parseFloat(token_rate(tokens, NaN));
-
     if (tokens != T) {
-
+        
         console.log("# of tokens changed from " + T + " to " + tokens);
+
+        rate = parseFloat(token_rate(tokens, NaN));
         console.log("Rate changed from " + R + " to " + rate);
 
         T = tokens;
