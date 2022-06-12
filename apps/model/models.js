@@ -128,7 +128,7 @@ async function generateGalleryFromJSON(url, limit) {
     cam_per_page = 7 * 13;
     results.forEach((element) => {
         let image = element.image_url;
-        modelURL = "https:/chaturbate.com/" + element.username;
+        modelURL = "https://chaturbate.com/" + element.username;
         // console.log(modelURL)
         addImageLink(mydiv, image, modelURL, element.username);
         j += 1;
