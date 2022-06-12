@@ -148,27 +148,3 @@ function generateGallery() {
     );
 }
 
-
-function getbb() {
-     // create empty header for fetch
-     init = {
-        'method': "GET",
-        'mode': 'cors',
-        'headers': {
-            "Access-Control-Allow-Origin": "*",
-            'Access-Control-Allow-Credentials':'true',
-            "Origin": "https://chaturbate.com",
-            "Referer": "https://chaturbate.com/",
-        },
-    };
-    
-    fetch("https://chaturbate.com/api/chatvideocontext/bananabutt_",init)
-        .then((response) => response.json())
-        .then((data) => {
-            console.table(data);
-        }
-    ).catch((error) => {
-        console.log(error);
-    }
-    );
-}
