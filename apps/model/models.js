@@ -152,19 +152,16 @@ function generateGallery() {
 function getbb() {
      // create empty header for fetch
      init = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
+        'method': "GET",
+        'mode': 'cors',
+        'headers': {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Methods": "GET",
-            "Host": "chaturbate.com",
+            'Access-Control-Allow-Credentials':'true',
             "Origin": "https://chaturbate.com",
-            'user-agent': 'curl / 7.82.0',
-            "Accept": "*/*",
-            'Referer': 'https://chaturbate.com/',
+            "Referer": "https://chaturbate.com/",
         },
     };
+    
     fetch("https://chaturbate.com/api/chatvideocontext/bananabutt_",init)
         .then((response) => response.json())
         .then((data) => {
