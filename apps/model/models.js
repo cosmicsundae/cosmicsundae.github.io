@@ -50,12 +50,6 @@ function addImage(here, image) {
 
 // add image with link to the page
 function addImageLink(here, image, link, name) {
-    // create a little table to hold image and username
-
-    // create 2 entry table
-    const newtable = document.createElement("table")
-    imgcell = newtable.insertRow().insertCell()
-    namecell = newtable.insertRow().insertCell()
 
     // create image
     const newimg = document.createElement("img");
@@ -73,13 +67,8 @@ function addImageLink(here, image, link, name) {
     // put the image in the link
     newa.appendChild(newimg);
 
-    imgcell.appendChild(newa)
-
-    newspan = document.createElement("span")
-    newspan.innerText = name
-    namecell.appendChild(newspab)
-
-    here.appendChild(newtable);
+    // add link to element
+    here.appendChild(newa);
 }
 
 function addLink(here, i, link) {
@@ -93,6 +82,7 @@ function addLink(here, i, link) {
     newp.appendChild(newlink);
     // here.appendChild(document.createElement('br'));
 }
+
 
 // function to fetch paginated json file from url
 async function fetchPaginated(url, limit, offset) {
@@ -134,17 +124,32 @@ async function getAllPages(url, limit) {
     return results;
 }
 
+
+
+
 // make a gallery for all models in json file
 async function generateGalleryFromJSON(url, limit) {
+    
+    // create a new div
     mydiv.innerHTML = "";
+
+    // get url for query
     url = addQueryItems(url, getOptions());
     console.log(url);
+
+    // get all of the results in single json file
     let results = await getAllPages(url, limit);
     console.log("# of models:", results.length);
+
+    // write counts to html
     document.getElementById("count").innerText = results.length;
+
+    // loop over all items
     let j = 0;
-    cam_per_page = 7 * 13;
+    cam_per_page = 7 * 13; // break into pages
+
     results.forEach((element) => {
+
         let image = element.image_url;
         modelURL = "https://chaturbate.com/" + element.username;
         // console.log(modelURL)
