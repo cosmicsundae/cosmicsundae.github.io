@@ -1,9 +1,9 @@
 # cosmicsundae 🍨
 
-[model list](./cb/models)
+[model list](./apps/models)
 
 
-[token converter](./cb/tokens)
+[token converter](./apps/cb)
 
 
 
