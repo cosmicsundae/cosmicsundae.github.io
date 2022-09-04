@@ -41,6 +41,8 @@ function getURL(limit, offset) {
     return addQueryItems(baseURL, { limit: limit, offset: offset });
 }
 
+
+
 function addImage(here, image) {
     const newimg = document.createElement("img");
     newimg.src = image;
@@ -49,14 +51,14 @@ function addImage(here, image) {
 }
 
 // add image with link to the page
-function addImageLink(here, image, link, name) {
+function addImageLink(image, link, name) {
 
     // create image
     const newimg = document.createElement("img");
+    newimg.className = 'model'
     newimg.src = image;
     newimg.alt = name;
     newimg.title = name;
-    newimg.style.width = "120px";
 
     // create link
     const newa = document.createElement("a");
@@ -68,20 +70,46 @@ function addImageLink(here, image, link, name) {
     newa.appendChild(newimg);
 
     // add link to element
-    here.appendChild(newa);
+    return newa
 }
 
-function addLink(here, i, link) {
+function addIndexedLink(i, link) {
     const newlink = document.createElement("a");
     newlink.href = link;
     newlink.innerText = link;
     // add line number
     const newp = document.createElement("p");
     newp.innerText = "index " + i + "   ";
-    here.appendChild(newp);
     newp.appendChild(newlink);
-    // here.appendChild(document.createElement('br'));
+
+    return newp
+
 }
+
+// create image with caption below it
+function addImageCaption(newimg, caption) {
+    // stack image and caption
+    const newp = document.createElement("p");
+    newp.innerText = caption;
+    newp.style.textAlign = "center";
+    // make text small, helvetica
+    newp.style.fontFamily = "Tahoma, Geneva, sans-serif";
+    newp.style.fontSize = "small";
+    newp.style.marginBottom = "0px";
+    newp.style.marginTop = "0px";
+
+    const newdiv = document.createElement("div");
+    newdiv.className = "broadcaster"
+    newdiv.style.display = "inline-block";
+    // reduce gap between image and caption
+
+
+    newdiv.appendChild(newimg);
+    newdiv.appendChild(newp);
+
+    return newdiv;
+}
+
 
 
 // function to fetch paginated json file from url
@@ -129,7 +157,7 @@ async function getAllPages(url, limit) {
 
 // make a gallery for all models in json file
 async function generateGalleryFromJSON(url, limit) {
-    
+
     // create a new div
     mydiv.innerHTML = "";
 
@@ -148,12 +176,16 @@ async function generateGalleryFromJSON(url, limit) {
     let j = 0;
     cam_per_page = 7 * 13; // break into pages
 
-    results.forEach((element) => {
+    await results.forEach((element) => {
 
         let image = element.image_url;
         modelURL = "https://chaturbate.com/" + element.username;
         // console.log(modelURL)
-        addImageLink(mydiv, image, modelURL, element.username);
+
+        // add image with link
+        image_link = addImageLink(image, modelURL, element.username);
+        image_with_caption = addImageCaption(image_link, element.username);
+        mydiv.appendChild(image_with_caption)
         j += 1;
         if (j % cam_per_page == 0) {
             // create a horizontal line/separator

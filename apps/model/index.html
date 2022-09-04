@@ -9,12 +9,22 @@
     <script defer src="models.js"></script>
     <style>
         /* img with rounded corners */
-        img {
-            margin:.2em;
+        img.model {
+            margin:0px;
+            padding:0px;
+            width: 120px;
             border-radius: 10%;
-            /* add shadow */
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
 
+        div.broadcaster {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            /* red border */
+            /* border: 2px solid #ff0000; */
+            /* border-radius: 10%; */
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
         }
 
     </style>
@@ -28,7 +38,7 @@
     <label for="gender">Gender:</label>
     <input id="gender" placeholder="f" type="search" size="1em">
     <label for="tags">Tags:</label>
-    <input id="tags" placeholder="Ex: muscle, feet, saliva" value="" onchange="generateGallery()">
+    <input id="tags" placeholder="Ex: muscle, feet, nonnude" value="" onchange="generateGallery()">
     <p>
         <!-- button that calls js function -->
         <button onclick="generateGallery()">Generate gallery</button>
