@@ -50,18 +50,36 @@ function addImage(here, image) {
 
 // add image with link to the page
 function addImageLink(here, image, link, name) {
+    // create a little table to hold image and username
+
+    // create 2 entry table
+    const newtable = document.createElement("table")
+    imgcell = newtable.insertRow().insertCell()
+    namecell = newtable.insertRow().insertCell()
+
+    // create image
     const newimg = document.createElement("img");
     newimg.src = image;
     newimg.alt = name;
     newimg.title = name;
     newimg.style.width = "120px";
+
+    // create link
     const newa = document.createElement("a");
     newa.href = link;
     newa.target = "_blank";
     newa.id = name;
 
+    // put the image in the link
     newa.appendChild(newimg);
-    here.appendChild(newa);
+
+    imgcell.appendChild(newa)
+
+    newspan = document.createElement("span")
+    newspan.innerText = name
+    namecell.appendChild(newspab)
+
+    here.appendChild(newtable);
 }
 
 function addLink(here, i, link) {
