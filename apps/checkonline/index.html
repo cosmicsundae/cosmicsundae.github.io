@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="check.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <style>
+        
+        * {
+        /* helvetica font */
+        font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        
+    </style>
+    <title>Are they online?</title>
+</head>
+<body>
+
+    <h1 id="broadcaster_name">Broadcaster name</h1>
+
+    <div>
+    <label for="name">Name:</label>
+    <input id="name" placeholder="bananabutt_" type="search" size="40em">
+    <p>
+        <button onclick="isOnline()">Check if they are online</button>
+    </p>
+    <br>
+    <!-- print room_status -->
+    <p id="room_status"></p>
+    <img id="room_image" src="" alt="room image">
+    </div>
+
+
+</body>
+</html>
