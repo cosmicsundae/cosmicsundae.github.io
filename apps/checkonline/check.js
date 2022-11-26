@@ -1,4 +1,5 @@
 
+document.domain = "chaturbate.com"
 
 const options = {
   method: 'GET',
@@ -14,6 +15,8 @@ function getName() {
 
 
 async function fetchModel() {
+  document.domain = "chaturbate.com"
+
   let name = getName();
   const url = `https://chaturbate.com/api/chatvideocontext/${name}`;
   console.log('in fetchModel', url);
