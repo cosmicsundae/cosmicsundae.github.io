@@ -15,7 +15,7 @@ function getName() {
 
 async function fetchModel() {
   let name = getName();
-  const url = `https://chaturbate.com/api/chatvideocontext/${name}?=`;
+  const url = `https://chaturbate.com/api/chatvideocontext/${name}`;
   console.log('in fetchModel', url);
   return await fetch(url, options)
     .then((response) => response.json())
