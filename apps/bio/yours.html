@@ -1,144 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-  a {
-    /* color: #d72638; */
-    /* text-decoration: none; */
-    /* add underline to link text */
-    /* text-decoration: underline; */
-  }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-  div.container {
-    border: 0px solid dodgerblue
-  }
-
-  .attribution {
-    font-size: 8pt;
-    font-family: sans-serif;
-    color: #e6e6e63c;
-    text-align: center
-  }
-
-  * {
-    font-family: 'Helvetica', sans-serif;
-    font-weight: 300;
-    color:rgb(200, 197, 190)
-  }
-
-  body {
-    background: black;
+  <style>
     
-  }
+    ul {
+      position: relative;
+      list-style: outside none none;
+      /* margin-left: -160px; */
+      border-radius: 12px;
+      background: fixed;
+      /* background: linear-gradient(rgb(191, 16, 130), rgb(25, 10, 162)); */
+      background-image: url(https://camo.mmcdn.com/7b3f38620aee5b4e2d402a8e043c39ff4a2108cc/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f6267322e6a7067);
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      padding: 30px;
+      color: white;
+      text-shadow: 0px 1px 2px #000;
+      font-family: Arial, Calibri, Helvetica;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 1.2em;
+      min-width: 500px;
+    }
 
-  h1 {
-    font-family: cursive;
-    font-size: 23pt;
-    font-weight: bold;
-    margin-bottom: 0em;
-  }
+    ol {
+      position: relative;
+      list-style: outside none none;
+      /* border: 2px solid blue; */
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding-inline-start: 0px;
+      max-width: 800px;
+    }
 
-  h2 {
-    font-size: 16pt;
-    font-size: 20pt;
-    font-weight: normal;
-    margin-top: 0em;
-  }
-  
-  h4 {
-    font-weight: normal;
-    font-style: italic;
-  }
+    li {
+      list-style: outside none none;
+      /* border: 2px solid red; */
+      border-radius: 15px;
+      text-align: center;
+      margin: auto;
+    }
 
-  ul.main {
-    list-style: none;
-    border-radius: 30px;
-    background: url(https://i.imgur.com/KsKrzJE.png);
-    /* background: url("assets/lina_back3.png"); */
-    background-color: black;
-    background-size: contain;
-    background-repeat:no-repeat;
-    box-sizing: border-box;
-    background-position: center;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: Roboto, HelveticaNeue-Light, sans-serif;
-    text-align: center;
-    padding-top: 20px;
-    border: 2px solid #ffefbdbb;
-    /* add drop shadow */
-    box-shadow: 0px 0px 20px #e1ac0e;
-    /* height: 500px; */
-    /* overflow:scroll */
-  }
-
-  li.main {
-    /* position: sticky; */
-    /* position: -webkit-sticky; */
-    /* top: 0; */
-    display: block;
-    position: relative;
-    width: 75%;
-    height: auto;
-    margin: auto;
-    padding-top: 10px;
-    padding-right: 10%;
-    padding-bottom: 10px;
-    padding-left: 10%;
-    margin-bottom: 2em;
-    filter: drop-shadow(0 0 2em #021f33);
-    text-align: center;
-    list-style: none;
-    box-sizing: border-box;
-    padding-top: 2px;
-    border-radius: 30px;
-    background-color: #0000007d;
-    /* color: #ffefbd; */
-    border: 1px solid rgb(256, 256, 7);
-    box-shadow: 0px 0px 20px rgb(182, 173, 3);
-  }
-</style>
-
-
-<div class="container">
-  <ul class="main">
-    <p>
-    <li class="main">
-      <h1>🍌 Hey, It's Lina 🍌</h1>
-      
-      <em>I am the one with whom you will find a common language 1000%.
-        </em>
-        <h4>Here you are always welcome!</h4>
-
-      
-    </li>
-    <li class="main"> 
-      <h2>🍌 About me 🍌</h2>
-      <p style="text-align:left">
-      I'm an athlete. And yes, if you don't like girls with muscles 💪,
-      You will change your mind when you see me XD
-      Also, I am interested in psychology. So get ready
-      not only for the show, but also for fascinating communication.
-      I am interested in the topic of sex and I like to learn new things, to look for myself.
-      So if you think you're weird with your fetish, no man
-      you are not alone, tell me all about your dark side and we will visit it together!
-      I'm somewhere between an introvert and an extrovert, so don't be surprised
-      if suddenly you come, and I'm not jumping around the room like a crazy monkey lol
-      I'm just on my nerves. There is another explanation for this: my zodiac sign is Pisces ♓.
-      </p>
-    </li>
-
-    <li class="main">
-      <h2> Why  🍌? 👀</h2>
-        <ul style="list-style: none;">
-          <li>
-            Me and my 🐰rabbits🐰 love bananas. 
-          </li>
-          <li>
-            Also&mldr; it looks like your dick 😆😉 lol
-          </li>
-    </li>
-
+    img {
+      z-index: 99;
+      pointer-events: none;
+      width: 500px;
+    }
     
-    </p>
-  </ul>
-  <span class="attribution">design: imbacksunday </span>
-</div>
+    img#name-image {
+      width: 700px;
+      height: 200px;
+    }
+
+    ul>li {
+      min-width: 0px;
+      max-width: 900px;
+    }
+
+    ol.wishlist {
+      max-width: 500px;
+    }
+
+    .textbox {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    ol.wishlist>li {
+      text-align: left;
+      border-radius: 0px;
+      border-bottom: 1px double;
+    }
+
+    .heading {
+      font-size: 2em;
+    }
+
+    .big-text {
+      font-size: 1.3em;
+    }
+
+    .main_image {
+      position: absolute;
+      object-position: 0px 18%;
+      filter: brightness(1.3);
+    }
+
+    .offset2 {
+      position: absolute;
+      object-position: 70% 0px;
+    }
+
+    .rounded {
+      width: 500px;
+      border-radius: 20%;
+    }
+
+    .circle {
+      position: relative;
+      /* make a circle */
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      /* box-shadow: 10px 10px 20px -10px #ffffff; */
+      overflow: hidden;
+    }
+
+    .price {
+      position: relative;
+      display: inline;
+      float: right;
+      width: 12ch;
+      text-align: right;
+      text-transform: none;
+      /* background: linear-gradient(to bottom, #8b8b8b 0%, #474747 100%); */
+      background: linear-gradient(to bottom, rgb(217, 237, 28) 0%, #8b8b8b 70%, #474747 100%);
+      border-radius: 7px;
+      padding: 7px 9px;
+      margin: -10px 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p style="display: unset"></p>
+    <p rel="nofollow" target="_blank"></p>
+    <p></p>
+    <ul>
+      <li>
+        <img class="circle main_image" src="https://i.imgur.com/KsKrzJE.png" />
+      </li>
+
+
+      <li>
+        <img id="name-image" rel="nofollow" src="https://i.imgur.com/Qcg1HCy.png" target="_blank" />
+      </li>
+
+      <li class="textbox">
+        <ol>
+          <li><span class='heading'>🍌 About me 🍌</span></li>
+          <li class="big-text">
+            <p>I'm an athlete. And yes, if you don't like girls with muscles 💪, you will change your mind when you see me. XD</p>
+            <p>Also, I am interested in psychology. So get ready not only for the show, but also for fascinating communication.</p>
+            <p>I am interested in the topic of sex and I like to learn new things, to look for myself.&nbsp;</p>
+            <p>So if you think you're weird with your fetish, no man you are not alone, tell me all about your dark side and we will visit it together!&nbsp;</p>
+            <p>I'm somewhere between an introvert and an extrovert, so don't be surprised if suddenly you come, and I'm not jumping around the room like a crazy monkey lol&nbsp;</p>
+            <p>I'm just on my nerves. There is another explanation for this: my zodiac sign is Pisces&nbsp;♓.</p>
+          </li>
+        </ol>
+      </li>
+
+
+      <li>
+        <img class="circle" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target="_blank" />
+      </li>
+
+
+      <li>
+        <img rel="nofollow"
+          src="https://camo.mmcdn.com/7504ebb65a60c254d908bd1226917777f177ee25/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f7469706d656e752e706e67"
+          target="_blank" />
+      </li>
+
+
+      <li class="textbox">
+        <ol class="wishlist">
+          <br />
+          <li>PM<span class="price">5 tokens</span></li><br />
+          <li>Hair Flip<span class="price">10 tokens</span></li><br />
+          <li>Wink<span class="price">20 tokens</span>
+          </li><br />
+          <li>Middle Finger<span class="price">30 tokens</span>
+          </li><br />
+          <li>Oral Fixation<span class="price" rel="nofollow" target=" _blank">40 tokens</span>
+          </li><br />
+          <li>Sissy Talk<span class="price" rel="nofollow" target=" _blank">50 tokens</span>
+          </li><br />
+          <li>Lipstick Application<span class="price" rel="nofollow" target=" _blank">60 tokens</span>
+          </li><br />
+          <li>Foot Sniff<span class="price" rel="nofollow" target=" _blank">70 tokens</span>
+          </li><br />
+          <li>Spit<span class="price" rel="nofollow" target=" _blank">80 tokens</span>
+          </li><br />
+          <li>Close-up Lip Licking<span class="price" rel="nofollow" target=" _blank">90 tokens</span>
+          </li><br />
+          <li>Stand for Worship<span class="price" rel="nofollow" target=" _blank">100 tokens</span>
+          </li><br />
+          <li>Pay it forward to a big dick for me to watch<span class="price" rel="nofollow" target=" _blank">150
+              tokens</span>
+          </li><br />
+          <li>C2C Cock Rating<span class="price" rel="nofollow" target=" _blank">200 tokens</span>
+          </li><br />
+          <li>C2C Slave Task<span class="price" rel="nofollow" target=" _blank">250 tokens</span>
+          </li><br />
+          <li>Poppers Play<span class="price" rel="nofollow" target=" _blank">300 tokens</span>
+          </li><br />
+          <li>C2C Humiliation<span class="price" rel="nofollow" target=" _blank">400 tokens</span>
+          </li><br />
+          <li>Full Body Worship<span class="price" rel="nofollow" target=" _blank">500 tokens</span>
+          </li><br />
+          <li>5 min password show<span class="price" rel="nofollow" target=" _blank">600 tokens</span>
+          </li><br />
+        </ol>
+      </li>
+
+
+      <li>
+        <img class="rounded" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+      </li>
+
+
+      <li>
+        <img rel="nofollow"
+          src="https://camo.mmcdn.com/78ad09a27ac31edceaa51a8e5d186e8e30fe45ef/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f7461786d656e752e706e67"
+          target="_blank" />
+      </li>
+
+
+      <li class="textbox">
+        <br />
+        <ol class="wishlist">
+          <br />
+          <li>Small Dick Tax<span class="price" rel="nofollow" target=" _blank">55 tokens</span>
+          </li><br />
+          <li>Virg1n Tax<span class="price" rel="nofollow" target=" _blank">65 tokens</span>
+          </li><br />
+          <li>Loser Tax<span class="price" rel="nofollow" target=" _blank">75 tokens</span>
+          </li><br />
+          <li>Cuckold Tax<span class="price" rel="nofollow" target=" _blank">85 tokens</span>
+          </li><br />
+          <li>Chasity Bitch Tax<span class="price" rel="nofollow" target=" _blank">95 tokens</span>
+          </li><br />
+        </ol>
+      </li>
+
+
+      <li>
+        <img class="circle offset2" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+      </li>
+
+
+      <li>
+      </li>
+
+
+      <li>
+        <img class="circle offset3" style="filter:brightness(2)" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png"
+          target=" _blank" />
+      </li>
+
+      <li>
+        <ul>
+          <li>Design by
+            <a rel="nofollow" href="https://chaturbate.com/imbacksunday" target="_blank">imbacksunday</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p></p>
+    <p></p>
+  </div>
+</body>
+
+</html>
