@@ -4,19 +4,15 @@
   padding: 0px;
   margin: 0px;
   /* border: 1px solid black; */
-}
-
-body {
-  height: 5000px;
-  border: 1px solid red;
-  margin: 5px;
-  border-radius: 10px;
+  pointer-events: none;
 }
 
 div#main
 {
   margin: 50px;
   font-size: 2vw;
+  filter: brightness(1.2) contrast(.9) saturate(1.2);
+  border: 1px solid #87091a;
 }
 
 ul,
@@ -103,8 +99,6 @@ li
 }
 
 /* image classes */
-img
-{}
 
 .label
 {
