@@ -6,6 +6,13 @@
   /* border: 1px solid black; */
 }
 
+body {
+  height: 5000px;
+  border: 1px solid red;
+  margin: 5px;
+  border-radius: 10px;
+}
+
 div#main
 {
   margin: 50px;
