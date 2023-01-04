@@ -6,138 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <link rel="stylesheet" href="bananabutt.css">
   <style>
-    ul {
-      position: relative;
-      list-style: outside none none;
-      /* margin-left: -160px; */
-      border-radius: 12px;
-      background: fixed;
-      /* background: linear-gradient(rgb(191, 16, 130), rgb(25, 10, 162)); */
-      background-image: url(https://camo.mmcdn.com/7b3f38620aee5b4e2d402a8e043c39ff4a2108cc/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f6267322e6a7067);
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;
-      padding: 30px;
-      color: white;
-      text-shadow: 0px 1px 2px #000;
-      font-family: Arial, Calibri, Helvetica;
-      font-size: 15px;
-      font-weight: bold;
-      line-height: 1.2em;
-      min-width: 500px;
-    }
 
-    ol {
-      position: relative;
-      list-style: outside none none;
-      /* border: 2px solid blue; */
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      padding-inline-start: 0px;
-      max-width: 800px;
-    }
-
-    li {
-      list-style: outside none none;
-      /* border: 2px solid red; */
-      border-radius: 15px;
-      text-align: center;
-      margin: auto;
-    }
-
-    img {
-      z-index: 99;
-      pointer-events: none;
-      width: 500px;
-    }
-
-    img#name-image {
-      width: 700px;
-      height: 200px;
-    }
-
-    ul>li {
-      min-width: 0px;
-      max-width: 900px;
-    }
-
-    ol.wishlist {
-      max-width: 500px;
-    }
-
-    .textbox {
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    ol.wishlist>li {
-      text-align: left;
-      border-radius: 0px;
-      border-bottom: 1px double;
-    }
-
-    .heading {
-      font-size: 2em;
-    }
-
-    .big-text {
-      font-size: 1.3em;
-    }
-
-    .main_image {
-      position: absolute;
-      object-position: 0px 18%;
-      filter: brightness(1.3);
-    }
-
-    .offset2 {
-      position: absolute;
-      object-position: 70% 0px;
-    }
-
-    .rounded {
-      width: 500px;
-      border-radius: 20%;
-    }
-
-    .circle {
-      position: relative;
-      /* make a circle */
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 50%;
-      /* box-shadow: 10px 10px 20px -10px #ffffff; */
-      overflow: hidden;
-    }
-
-    .price {
-      position: relative;
-      display: inline;
-      float: right;
-      width: 12ch;
-      text-align: right;
-      text-transform: none;
-      /* background: linear-gradient(to bottom, #8b8b8b 0%, #474747 100%); */
-      background: linear-gradient(to bottom, rgb(217, 237, 28) 0%, #8b8b8b 70%, #474747 100%);
-      border-radius: 7px;
-      padding: 7px 9px;
-      margin: -10px 0px;
-    }
   </style>
 </head>
 
 <body>
-  <div>
+  <div id="main">
     <p style="display: unset"></p>
     <p rel="nofollow" target="_blank"></p>
-    <p></p>
-    <ul>
+
+    <!-- <img class="top-image forNow" rel="nofollow" src="hands.png" target="_blank" /> -->
+    <!-- <img class="top-image" style="margin-top: -50%;" rel="nofollow" src="https://i.imgur.com/Qcg1HCy.png" target="_blank" /> -->
+    <ul class="container">
       <li>
-        <img class="circle main_image" src="https://i.imgur.com/KsKrzJE.png" />
+        <img class="circle drop-shadow" id="main_image"
+          src="https://drive.google.com/uc?export=view&id=19P1Ucn3wpRJIyRnw4WFBiqNhChN8JMla" />
       </li>
       <li>
-        <img id="name-image" rel="nofollow" src="https://i.imgur.com/Qcg1HCy.png" target="_blank" />
+        <div class="name-tag">
+          <img id="name-image" src="https://drive.google.com/uc?export=view&id=15DaDc2q2xEfT3zM4L1aACMBrKM5zeQEo" />
+          <!-- <div class="table-row">
+            <div class="table-cell">
+              <img class="drop-shadow" id="before-name" rel="nofollow" src="https://drive.google.com/uc?export=view&id=1oyNPM5IVtnof4EZ70MpQV-EcSpHGfHvj" target="_blank" />
+            </div>
+            <div class="table-cell">
+              <img class="" id="name-image" rel="nofollow" src="https://drive.google.com/uc?export=view&id=1X7Ff7ZbqVuGws7UDf8g1mHeOsYYTKkrx" target="_blank" />
+            </div>
+            <div class="table-cell">
+              <img class="drop-shadow" id="after-name" rel="nofollow" src="https://drive.google.com/uc?export=view&id=1oyNPM5IVtnof4EZ70MpQV-EcSpHGfHvj" target="_blank" />
+            </div>
+          </div>   -->
+        </div>
       </li>
       <li class="textbox">
         <ol>
@@ -145,29 +46,31 @@
           <li><span class='heading'>🍌 About me 🍌</span></li><br />
           <li class="big-text">
             I'm an athlete. And yes, if you don't like girls with muscles 💪, you will change your mind when you see
-              me. XD<br />&nbsp;<br />
+            me. XD<br />&nbsp;<br />
             Also, I am interested in psychology. So get ready not only for the show, but also for fascinating
-              communication.<br />&nbsp;<br />
+            communication.<br />&nbsp;<br />
             I am interested in the topic of sex and I like to learn new things, to look for myself.<br />&nbsp;<br />
             So if you think you're weird with your fetish, no man you are not alone, tell me all about your dark side
-              and we will visit it together!<br />&nbsp;</p><br />
+            and we will visit it together!<br />&nbsp;</p><br />
             I'm somewhere between an introvert and an extrovert, so don't be surprised if suddenly you come, and I'm
-              not jumping around the room like a crazy monkey lol<br />&nbsp;<br />
-            I'm just on my nerves. There is another explanation for this: my zodiac sign is Pisces&nbsp;♓.<br />&nbsp;<br />
+            not jumping around the room like a crazy monkey lol<br />&nbsp;<br />
+            I'm just on my nerves. There is another explanation for this: my zodiac sign is
+            Pisces&nbsp;♓.<br />&nbsp;<br />
           </li>
           <br />
         </ol>
       </li>
       <br />
       <li>
-        <img class="circle" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target="_blank" />
+        <img class="circle drop-shadow" id="image2" rel="nofollow"
+          src="https://drive.google.com/uc?export=view&id=1J_UfHC4Kg6oVC4bIJ_lcL-MxDAxxkFZJ" target="_blank" />
       </li>
       <li>
-        <img rel="nofollow"
+        <img class='label' rel="nofollow"
           src="https://camo.mmcdn.com/7504ebb65a60c254d908bd1226917777f177ee25/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f7469706d656e752e706e67"
           target="_blank" />
       </li>
-      <li class="textbox">
+      <li class="textbox menu">
         <ol class="wishlist">
           <br />
           <li>PM<span class="price">5 tokens</span></li><br />
@@ -209,16 +112,17 @@
       </li>
       <br />
       <li>
-        <img class="rounded" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+        <img class="rounded drop-shadow" id="image3" rel="nofollow"
+          src="https://drive.google.com/uc?export=view&id=1-KK4VF1hmUfFQJ4wEOiInvTdoLtlKcnl" target=" _blank" />
       </li>
       <br />
       <li>
-        <img rel="nofollow"
+        <img class='label' rel="nofollow"
           src="https://camo.mmcdn.com/78ad09a27ac31edceaa51a8e5d186e8e30fe45ef/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f7461786d656e752e706e67"
           target="_blank" />
       </li>
       <br />
-      <li class="textbox">
+      <li class="textbox menu">
         <br />
         <ol class="wishlist">
           <br />
@@ -236,24 +140,25 @@
       </li>
       <br />
       <li>
-        <img class="circle offset2" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+        <div class="two-image-container">
+          <img class="circle" id="image4" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+          <img class="circle" id="image5" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png" target=" _blank" />
+        </div>
       </li>
       <li>
-      </li>
-      <li>
-        <img class="circle offset3" style="filter:brightness(2)" rel="nofollow" src="https://i.imgur.com/KsKrzJE.png"
-          target=" _blank" />
-      </li>
-      <li>
-        <ul>
+        <ul class="footer">
           <li>Design by
             <a rel="nofollow" href="https://chaturbate.com/imbacksunday" target="_blank">imbacksunday</a>
           </li>
         </ul>
       </li>
     </ul>
+
     <p></p>
     <p></p>
+    <ul class="top-image"></ul>
+  </div>
+
   </div>
 </body>
 
