@@ -4,15 +4,14 @@
   padding: 0px;
   margin: 0px;
   /* border: 1px solid black; */
-  pointer-events: none;
+  
 }
 
 div#main
 {
   margin: 50px;
   font-size: 2vw;
-  filter: brightness(1.2) contrast(.9) saturate(1.2);
-  border: 1px solid #87091a;
+  filter: brightness(1.2) contrast(.9) saturate(1.2)
 }
 
 ul,
@@ -20,6 +19,10 @@ ol,
 li
 {
   /* border: 2px solid black; */
+}
+
+img {
+  pointer-events: none;
 }
 
 ul
@@ -34,6 +37,7 @@ ul
   font-size: clamp(1vmin, 15px, 2vmin);
   font-weight: normal;
   line-height: 1.5em;
+  
 
 }
 
