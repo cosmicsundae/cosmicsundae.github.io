@@ -9,7 +9,6 @@
 div#main {
   margin: 50px;
   font-size: 2vw;
-  filter: brightness(1.2) contrast(.9) saturate(1.2)
 }
 
 img {
@@ -24,7 +23,7 @@ ul {
   color: white;
   text-shadow: 0px 1px 2px #000;
   font-family: Arial, Calibri, Helvetica;
-  font-size: clamp(1vmin, 15px, 2vmin);
+  font-size: clamp(1vmin, 18px, 2vmin);
   font-weight: normal;
   line-height: 1.5em;
 }
@@ -54,13 +53,18 @@ li {
 }
 
 .subheading {
-  font-size: 1.5em;
-}
-
-.big-text {
   font-size: 1.3em;
 }
 
+.big-text {
+  font-size: 1.2em;
+}
+
+.left-align {
+  text-align: left;
+  padding-left: 7%;
+  padding-right: 7%
+}
 
 .container,
 .footer,
@@ -72,14 +76,17 @@ li {
   position: relative;
   background-attachment: fixed;
   background-image:
-    radial-gradient(circle at 90% 90%, #0404027f, #0a0a057f, #1a1a0c7f, #3231177f, #4f4d227f, #706b2d7f, #9389367f, #b4a43c7f, #d1bc417f, #e9ce437f, #f9d9447f, #ffdd447f),
-    url(https://camo.mmcdn.com/7b3f38620aee5b4e2d402a8e043c39ff4a2108cc/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f6267322e6a7067);
+    radial-gradient(circle at 90% 90%, #040402c7, #0a0a05c7, #1a1a0cc7, #323117c7, #4f4d22c7, #706b2dc7, #938936c7, #b4a43cc7, #d1bc41c7, #e9ce43c7, #f9d944c7, #ffdd44c7),
+    url("https://drive.google.com/uc?export=view&id=1PLZsmt7qfe6SudQaRVHCinQ2vj5oOiIf");
+    /* url(https://camo.mmcdn.com/7b3f38620aee5b4e2d402a8e043c39ff4a2108cc/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f6267322e6a7067); */
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+  background-color: #c6a413;
   padding: 5em;
   z-index: 900;
-  box-shadow: 0px 0px 10px 2px rgb(55 9 11);
+  box-shadow: 0px 0px 10px 2px rgb(249, 249, 245);
+  filter:  saturate(1.2)
 }
 
 .footer {
@@ -133,10 +140,10 @@ img.rounded {
 
 
 div.name-tag {
-  display: table;
-  align-content: center;
+  position: relative;
+  width: 100%;
   max-width: 885px;
-  box-sizing: border-box;
+  /* box-sizing: content-box; */
   margin: auto;
 }
 
@@ -146,8 +153,9 @@ div.name-tag {
 }
 
 #name-image {
-  width: 90vi;
+  width: 100%;
   margin-top: -10px;
+  margin-bottom: -8px;
 }
 
 #before-name {
