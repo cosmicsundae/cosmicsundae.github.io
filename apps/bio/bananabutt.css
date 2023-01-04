@@ -76,7 +76,8 @@ li {
   position: relative;
   background-attachment: fixed;
   background-image:
-    radial-gradient(circle at 90% 90%, #040402c7, #0a0a05c7, #1a1a0cc7, #323117c7, #4f4d22c7, #706b2dc7, #938936c7, #b4a43cc7, #d1bc41c7, #e9ce43c7, #f9d944c7, #ffdd44c7),
+    radial-gradient(circle at 90% 90%, rgba(0,0,0,.25), black),
+    /* radial-gradient(circle at 90% 90%, #040402c7, #0a0a05c7, #1a1a0cc7, #323117c7, #4f4d22c7, #706b2dc7, #938936c7, #b4a43cc7, #d1bc41c7, #e9ce43c7, #f9d944c7, #ffdd44c7), */
     url("https://drive.google.com/uc?export=view&id=1PLZsmt7qfe6SudQaRVHCinQ2vj5oOiIf");
     /* url(https://camo.mmcdn.com/7b3f38620aee5b4e2d402a8e043c39ff4a2108cc/687474703a2f2f7777772e6673612e646b2f636861747572626174652f7468657a616272696e612f6f63746f626572323032312f6267322e6a7067); */
   background-repeat: no-repeat;
