@@ -1,5 +1,4 @@
-*
-{
+* {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -7,27 +6,17 @@
   
 }
 
-div#main
-{
+div#main {
   margin: 50px;
   font-size: 2vw;
-  filter: brightness(1.2) contrast(.9) saturate(1.2);
-  border: 1px solid #9A031E;
-}
-
-ul,
-ol,
-li
-{
-  /* border: 2px solid black; */
+  filter: brightness(1.2) contrast(.9) saturate(1.2)
 }
 
 img {
   pointer-events: none;
 }
 
-ul
-{
+ul {
   list-style: inside none none;
   margin: auto;
   /* min-width: 500px; */
@@ -38,19 +27,48 @@ ul
   font-size: clamp(1vmin, 15px, 2vmin);
   font-weight: normal;
   line-height: 1.5em;
-  
-
 }
+
+
+ol {
+  position: relative;
+  list-style: outside none none;
+  /* border: 2px solid blue; */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline-start: 0px;
+  max-width: 800px;
+}
+
+li {
+  list-style: outside none none;
+  /* border: 2px solid red; */
+  border-radius: 1em;
+  text-align: center;
+  margin: auto;
+}
+
+.heading {
+  font-size: 2em;
+}
+
+.subheading {
+  font-size: 1.5em;
+}
+
+.big-text {
+  font-size: 1.3em;
+}
+
 
 .container,
 .footer,
-.top-image
-{
+.top-image {
   /* margin-left: -160px; */
 }
 
-.container
-{
+.container {
   position: relative;
   background-attachment: fixed;
   background-image:
@@ -62,13 +80,9 @@ ul
   padding: 5em;
   z-index: 900;
   box-shadow: 0px 0px 10px 2px rgb(55 9 11);
-
-
-
 }
 
-.footer
-{
+.footer {
   margin-left: -160px;
   list-style: outside none none;
   margin: auto;
@@ -82,38 +96,16 @@ ul
   line-height: 1.2em;
 }
 
-ol
-{
-  position: relative;
-  list-style: outside none none;
-  /* border: 2px solid blue; */
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-inline-start: 0px;
-  max-width: 800px;
-}
 
-li
-{
-  list-style: outside none none;
-  /* border: 2px solid red; */
-  border-radius: 1em;
-  text-align: center;
-  margin: auto;
-}
 
-/* image classes */
-
-.label
-{
+img.label {
   position: relative;
   max-width: 90%;
+  max-height: 150px;
   /* max-width: 500px; */
 }
 
-.circle
-{
+img.circle {
   position: relative;
   width: 90%;
   max-width: 500px;
@@ -125,28 +117,22 @@ li
   overflow: hidden;
 }
 
-
-
-.drop-shadow
-{
+img.drop-shadow {
   filter: drop-shadow(7px 7px 17px #0C0C0C);
 }
 
-.rounded
-{
+img.rounded {
   border-radius: 1em;
   overflow: hidden;
 }
 
-#main_image
-{
+#main_image {
   position: relative;
   object-position: 0px 18%;
 }
 
 
-div.name-tag
-{
+div.name-tag {
   display: table;
   align-content: center;
   max-width: 885px;
@@ -154,46 +140,31 @@ div.name-tag
   margin: auto;
 }
 
-div.table-row
-{
+#before-name,
+#after-name {
+  width: 20vi;
+}
+
+#name-image {
+  width: 90vi;
+  margin-top: -10px;
+}
+
+#before-name {
+  transform: scaleX(-1)
+}
+
+div.table-row {
   display: table-row;
 }
 
-
-div.table-cell
-{
+div.table-cell {
   display: table-cell;
   vertical-align: baseline;
 }
 
 
-#before-name,
-#after-name
-{
-  width: 20vi;
-}
-
-#name-image
-{
-  width: 90vi;
-  margin-top: -10px;
-}
-
-#before-name
-{
-  transform: scaleX(-1)
-}
-
-
-
-
-#image2
-{
-  overflow: hidden;
-}
-
-#image3
-{
+#image3 {
   max-width: 1000px;
   width: 90%;
   aspect-ratio: 3 / 1.2;
@@ -201,59 +172,41 @@ div.table-cell
 }
 
 
-.two-image-container
-{
+.two-image-container {
   text-align: center;
   width: fit-content;
   margin: auto;
 }
 
-#image4,
-#image5
-{
+#image4, #image5 {
   margin: 5px;
   width: 45%;
 }
 
-
-
-.textbox
-{
+.textbox {
   background-color: rgba(0, 0, 0, 0.4);
   min-width: 10em;
   max-width: 900px;
   backdrop-filter: blur(1.5px);
 }
 
-.menu
-{}
+.menu {}
 
-.wishlist
-{
+/* SET UP TIPMENU */
+
+ol.wishlist {
   max-width: 500px;
   padding: 0px 10px;
 }
 
-ol.wishlist>li
-{
+ol.wishlist>li {
   text-align: left;
   border-radius: 0px;
   border-bottom: 1px solid white;
   /* padding-bottom: 7px; */
 }
 
-.heading
-{
-  font-size: 2em;
-}
-
-.big-text
-{
-  font-size: 1.3em;
-}
-
-.price
-{
+.price {
   position: relative;
   display: inline;
   float: right;
@@ -275,12 +228,35 @@ ol.wishlist>li
   margin-bottom: calc(-1.2em + .2em);
 }
 
-/* place image at top of block, static and hides behind content */
-.isolate
-{}
 
-.top-image
-{
+/* SET UP SCHEDULE */
+ol.schedule {
+  position: relative;
+  max-width: 500px;
+  padding: 0px 10px;
+  /* border: 1px solid red; */
+}
+
+
+ol.schedule>li {
+  text-align: left;
+}
+
+span.time {
+  float: right;
+}
+
+li.time {
+  width: 300px;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+
+/* place image at top of block, static and hides behind content */
+.isolate {}
+
+.top-image {
   /* display:block; */
   position: sticky;
   bottom: 0;
