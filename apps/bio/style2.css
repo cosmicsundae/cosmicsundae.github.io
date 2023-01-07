@@ -51,7 +51,7 @@ div#main_wrapper {
 ul.main__body {
   position: relative;
   background-attachment: fixed;
-  background-image: url("./grey1.jpg");
+  background-image: url("https://drive.google.com/uc?export=view&id=1Qi2BuabqNylbgjQNik2s3EWlWNsXAeyX");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -156,7 +156,7 @@ img.label {
 }
 
 .drop-shadow {
-  /* filter: drop-shadow(7px 7px 17px #0C0C0C); */
+  filter: drop-shadow(0px 7px 17px #0C0C0C);
 }
 
 .rounded {
@@ -166,12 +166,14 @@ img.label {
 
 img#main_image {
   position: relative;
-  width: 100%;
+  width: 50%;
   object-position: 0px 35%;
-  max-width: 1000px;
-  aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 50%
+  max-width: 1000px;
+  /* max-height: 500px; */
+  aspect-ratio: 3 / 4;
+  /* object-fit: cover; */
+  border-radius: 50%;
 }
 
 img#name-image {
@@ -181,6 +183,7 @@ img#name-image {
   margin: auto;
   margin-top: 0px;
   margin-bottom: -5px;
+  filter: grayscale(1)
 }
 
 
@@ -197,7 +200,7 @@ div.table-cell {
 #image3 {
   max-width: 1000px;
   width: 90%;
-  aspect-ratio: 3 / 1.2;
+  aspect-ratio: 3 / 1.5;
   object-fit: cover;
 }
 
