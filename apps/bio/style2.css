@@ -2,39 +2,54 @@
 
 /* simple css reset */
 
-* {
+*
+{
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
   /* border: 1px solid black; */
-  
+
 }
 
-body {
+body
+{
   /* background-color: #1f2c39; */
+  margin: 10px;
 }
 
-/* define bio base */
-div.bio__root {
-  margin: 5px;
-  font-size: 12px;
-
-}
 
 .main__body,
-.footer {
+.footer
+{
   /* margin-left: -160px; */
 }
 
+p.main
+{
+  /* display: block;
+  width: 100% !important;
+  min-height: 2000px;
+  height: 100% !important;
+  z-index: -55;
+  position: fixed;
+  top: 0;
+  left: 0; */
+}
 
 /* our main structural components are ul, ol, li */
 /* clear bullets and apply font styling */
 /* everything is contained with in ul.main__body and ul.footer */
 
-ul {
+ul
+{
+  /* border: 2px solid red; */
+}
+
+ul.main__body
+{
+  position: relative;
   list-style: inside none none;
   margin: auto;
-  /* min-width: 500px; */
   border-radius: 1px;
   color: white;
   text-shadow: 0px 1px 2px rgb(0, 0, 0);
@@ -42,25 +57,25 @@ ul {
   font-size: clamp(1vmin, 12px, 2vmin);
   font-weight: 300;
   line-height: 1.3em;
-}
-
-div#main_wrapper {
-  backdrop-filter: blur(2.5px);
-}
-
-ul.main__body {
-  position: relative;
+  padding: 3em;
+  z-index: 900;
   background-attachment: fixed;
-  background-image: url("https://drive.google.com/uc?export=view&id=1Qi2BuabqNylbgjQNik2s3EWlWNsXAeyX");
+  background-image: url("https://drive.google.com/uc?export=view&id=1m9kQMaq0C7RAAq3XKduHqd5JEQHHL8Z_");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  padding: 5em;
-  z-index: 900;
   
+
 }
 
-div.footer {
+ul#main_wrapper {
+  backdrop-filter: blur(2px);
+  border: 1px solid black;
+  padding: 2em;
+}
+
+ul.footer
+{
   margin: auto;
   margin-top: 50px;
   border-radius: 12px;
@@ -73,43 +88,47 @@ div.footer {
 /* li elements hold the individual
 pieces of out bio */
 
-li {
+li
+{
   list-style: outside none none;
   border-radius: 5px;
   text-align: center;
   margin: auto;
 }
 
-ul > li:not(:has(img)) {
+ul>li:not(:has(img))
+{
   border: 1px solid black;
 }
 
 /* a text box with background color */
-.textbox {
+.textbox
+{
   background-color: rgba(0, 0, 0, 0.7);
   min-width: 10em;
   max-width: 900px;
 }
 
-.imagebox {
-  /* max-width: max-content; */
-}
 
-.heading {
+.heading
+{
   font-size: 3em;
   font-family: 'Brush Script MT', cursive;
 }
 
-.subheading {
+.subheading
+{
   font-size: 1.3em;
   text-align: center;
 }
 
-.big-text {
+.big-text
+{
   font-size: 1.2em;
 }
 
-.left-align {
+.left-align
+{
   text-align: left;
   padding-left: 7%;
   padding-right: 7%
@@ -117,7 +136,8 @@ ul > li:not(:has(img)) {
 
 
 /* lists/menus can use ordered lists with no bullets */
-ol {
+ol
+{
   position: relative;
   list-style: outside none none;
   /* border: 1px solid blue; */
@@ -128,7 +148,8 @@ ol {
   max-width: 800px;
 }
 
-li > ol { 
+li>ol
+{
   /* border: 1px solid goldenrod; */
   border-top: 2px solid goldenrod;
   border-bottom: 2px solid goldenrod;
@@ -136,17 +157,20 @@ li > ol {
 
 /* define img related styles */
 
-img {
+img
+{
   pointer-events: none;
 }
 
-img.label {
+img.label
+{
   max-width: 90%;
   max-height: 150px;
 
 }
 
-.circle {
+.circle
+{
   width: 90%;
   max-width: 500px;
   aspect-ratio: 1 / 1;
@@ -155,28 +179,30 @@ img.label {
   overflow: hidden;
 }
 
-.drop-shadow {
+.drop-shadow
+{
   filter: drop-shadow(0px 7px 17px #0C0C0C);
 }
 
-.rounded {
+.rounded
+{
   border-radius: 5px;
   overflow: hidden;
 }
 
-img#main_image {
+img#main_image
+{
   position: relative;
   width: 50%;
   object-position: 0px 35%;
   object-fit: cover;
   max-width: 1000px;
-  /* max-height: 500px; */
   aspect-ratio: 3 / 4;
-  /* object-fit: cover; */
   border-radius: 50%;
 }
 
-img#name-image {
+img#name-image
+{
   position: relative;
   width: 100%;
   max-width: 885px;
@@ -187,17 +213,20 @@ img#name-image {
 }
 
 
-div.table-row {
+div.table-row
+{
   display: table-row;
 }
 
-div.table-cell {
+div.table-cell
+{
   display: table-cell;
   vertical-align: baseline;
 }
 
 
-#image3 {
+#image3
+{
   max-width: 1000px;
   width: 90%;
   aspect-ratio: 3 / 1.5;
@@ -205,13 +234,15 @@ div.table-cell {
 }
 
 
-.two-image-container {
+.two-image-container
+{
   text-align: center;
   width: fit-content;
   margin: auto;
 }
 
-.two-image-container > img {
+.two-image-container>img
+{
   margin: 5px;
   width: 45%;
 }
@@ -219,27 +250,31 @@ div.table-cell {
 
 /* SET UP TIPMENU */
 
-li#li__tipmenu {
+li#li__tipmenu
+{
   max-width: fit-content;
   padding: 1.5em;
   /* border: 1px solid black; */
 }
 
-ol.tipmenu {
+ol.tipmenu
+{
   width: 300px;
   max-width: 500px;
   padding: 0px 10px;
   /* border: 1px solid goldenrod; */
 }
 
-ol.tipmenu>li {
+ol.tipmenu>li
+{
   text-align: left;
   border-radius: 0px;
   border-bottom: 1px solid white;
   /* padding-bottom: 7px; */
 }
 
-.price {
+.price
+{
   position: relative;
   display: inline;
   float: right;
@@ -263,13 +298,15 @@ ol.tipmenu>li {
 
 
 /* SET UP SCHEDULE */
-li#li__schedule{
+li#li__schedule
+{
   max-width: fit-content;
   padding: 1.5em;
   border: 1px solid black;
 }
 
-ol.schedule {
+ol.schedule
+{
   position: relative;
   max-width: 500px;
   padding: 0px 10px;
@@ -277,15 +314,18 @@ ol.schedule {
 }
 
 
-ol.schedule>li {
+ol.schedule>li
+{
   /* text-align: left; */
 }
 
-span.time {
+span.time
+{
   float: right;
 }
 
-li.time {
+li.time
+{
   width: 300px;
   line-height: 1.2em;
   font-weight: bold;
@@ -294,9 +334,11 @@ li.time {
 
 
 /* place image at top of block, static and hides behind content */
-.isolate {}
+.isolate
+{}
 
-.top-image {
+.bottom-image, .top-image
+{
   /* display:block; */
   position: sticky;
   bottom: 0;
