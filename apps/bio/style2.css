@@ -7,8 +7,7 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-  /* border: 1px solid black; */
-
+  /* border: 1px solid red; */
 }
 
 body
@@ -36,7 +35,7 @@ ul.main__body
   font-family: Helvetica, serif;
   font-size: clamp(1vmin, 12px, 2vmin);
   font-weight: 300;
-  line-height: 1.3em;
+  line-height: 1.3;
   padding: 3em;
   z-index: 900;
   background-attachment: fixed;
@@ -44,13 +43,14 @@ ul.main__body
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  
+
 
 }
 
-ul#main_wrapper {
+ul#main_wrapper
+{
   backdrop-filter: blur(2px);
-  border: 1px solid black;
+  border: 3px double black;
   padding: 2em;
 }
 
@@ -65,8 +65,11 @@ ul.footer
 }
 
 
-ul.top-image, ul.main__body, ul.bottom-image {
-  /* margin-left: -160px; */
+ul.top-image,
+ul.main__body,
+ul.bottom-image
+{
+  margin-left: -160px;
 }
 
 /* define the li elements */
@@ -112,6 +115,11 @@ ul>li:not(:has(img))
   font-size: 1.2em;
 }
 
+.small-text
+{
+  font-size: 0.8em;
+}
+
 .left-align
 {
   text-align: left;
@@ -123,13 +131,8 @@ ul>li:not(:has(img))
 /* lists/menus can use ordered lists with no bullets */
 ol
 {
-  position: relative;
   list-style: outside none none;
-  /* border: 1px solid blue; */
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-inline-start: 0px;
+  margin: auto;
   max-width: 800px;
 }
 
@@ -244,7 +247,7 @@ li#li__tipmenu
 
 ol.tipmenu
 {
-  width: 300px;
+  width: 350px;
   max-width: 500px;
   padding: 0px 10px;
   /* border: 1px solid goldenrod; */
@@ -283,6 +286,9 @@ ol.tipmenu>li
 
 
 /* SET UP SCHEDULE */
+.schedule
+{}
+
 li#li__schedule
 {
   max-width: fit-content;
@@ -290,9 +296,16 @@ li#li__schedule
   border: 1px solid black;
 }
 
+img.schedule
+{
+  /* transform: rotate(90deg); */
+  /* width: 200px; */
+}
+
 ol.schedule
 {
   position: relative;
+  /* width: 400px; */
   max-width: 500px;
   padding: 0px 10px;
   /* border: 1px solid red; */
@@ -300,9 +313,7 @@ ol.schedule
 
 
 ol.schedule>li
-{
-  /* text-align: left; */
-}
+{}
 
 span.time
 {
@@ -311,14 +322,15 @@ span.time
 
 li.time
 {
-  width: 300px;
+  max-width: 250px;
   line-height: 1.2em;
   font-weight: bold;
   text-align: left;
 }
 
 
-.bottom-image, .top-image
+.bottom-image,
+.top-image
 {
   /* display:block; */
   position: sticky;
@@ -352,4 +364,92 @@ li.time
   background-size: cover;
   background-blend-mode: multiply;
   z-index: 100;
+}
+
+p.cbhours
+{
+  margin: 0;
+  margin-left: 30%;
+  margin-top: 15px;
+  max-width: 70%;
+  text-align: right;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #a4bef2
+}
+
+a.cbhours
+{
+  color: white;
+  background-color: #424297;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #342454;
+  padding: 3px 5px;
+  border-radius: 15px;
+  /* filter: drop-shadow(1px 1px 2px #c40fcb); */
+  margin: 2px
+}
+
+#cbhourstag
+{
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 0cm;
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: top;
+  width: 100%;
+}
+
+#cbhuors_span
+{
+  width: 400px;
+  height: 45px;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  backdrop-filter: blur(999px);
+  -webkit-backdrop-filter: blur(999px);
+  z-index: 4;
+}
+
+#cbhours_a
+{
+  z-index: 9999;
+  position: absolute;
+  left: 263px;
+  top: 2px;
+}
+
+li.dmca
+{
+
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  list-style: none;
+  padding: 15px;
+  margin: 40px auto 40px auto;
+  text-align: left;
+  position: relative;
+  clear: both;
+  float: none;
+  background-color: rgba(0, 0, 0, 0.60);
+  font-size: 0.8em;
+  color: #ccc;
+
+
+}
+
+img.dmca-badge
+{
+  display: block;
+  margin: 2px 7px 3px 3px;
+  width: 70;
+  float: left;
+  filter: grayscale(100%) blur(0px) brightness(100%) contrast(100%) hue-rotate(0deg) opacity(100%) invert(100%) saturate(100%) sepia(0%);
 }
